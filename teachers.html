@@ -1,0 +1,222 @@
+<!doctype html><html lang="zh-Hant"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>老師喊單績效追蹤</title>
+<style>
+:root{--bg:#0d1117;--panel:#161b22;--bd:#2a3340;--tx:#e6edf3;--mut:#8b95a3;--acc:#3b82f6;--gold:#f5b301;--up:#f0506e;--dn:#27c08a;--chip:#21304a}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:-apple-system,"PingFang TC","Microsoft JhengHei",Segoe UI,system-ui,sans-serif;line-height:1.6}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 16px 60px}
+header h1{font-size:26px;margin:0 0 4px}
+header .sub{color:var(--mut);font-size:13px}
+a{color:var(--acc);text-decoration:none}
+h2{font-size:18px;margin:34px 0 10px;border-left:4px solid var(--gold);padding-left:10px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel);border:1px solid var(--bd);border-radius:8px;overflow:hidden}
+th{color:var(--mut);font-weight:600;font-size:12px;text-align:left;padding:8px 10px;border-bottom:1px solid var(--bd);white-space:nowrap;background:#10151c}
+td{padding:7px 10px;border-bottom:1px solid #1d2530;vertical-align:top}
+tr:last-child td{border-bottom:none}
+.up{color:var(--up);font-weight:600}
+.dn{color:var(--dn);font-weight:600}
+.mut{color:var(--mut)}
+.tname{font-weight:700;white-space:nowrap}
+.rule{background:var(--panel);border:1px solid var(--bd);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--mut);margin-top:14px}
+.rule b{color:var(--tx)}
+.disclaimer{margin-top:40px;font-size:12px;color:var(--mut);border-top:1px solid var(--bd);padding-top:14px}
+@media(max-width:760px){.wrap{padding:14px 8px 40px}table{font-size:12px}td,th{padding:6px 6px}}
+</style></head><body><div class="wrap">
+<header>
+  <h1>🎯 老師喊單績效追蹤</h1>
+  <div class="sub">最後更新 2026-06-10 14:20 ｜ <a href="index.html">← 回大大毛多 台股200 框架分析</a></div>
+</header>
+
+<div class="rule">
+<b>追蹤規則：</b>所有群組喊單（買/賣皆收錄）以「<b>發文時間 +5 分鐘</b>」的 1 分 K 價格假設成交，模擬一般人看到訊息後跟單的真實成本。
+出場三軌並行：①老師喊出場 → 以出場訊息 +5 分鐘價平倉　②跌破老師講的停損價 → 自動停損出場　③同步記錄 T+1 / T+5 / T+20 報酬快照。
+沒講進場價的「事後報喜」不入帳損益，只計入<b>報喜率</b>（報喜率越高，越可能只秀贏單）。未含手續費與證交稅。
+</div>
+
+<h2>📋 老師記分卡</h2>
+<table><thead><tr>
+<th>老師</th><th>事前喊單</th><th>報喜（報喜率）</th><th>已結算</th><th>勝率</th><th>平均報酬</th><th>持倉中</th><th>未實現均報</th><th>賣點檢驗*</th>
+</tr></thead><tbody>
+<tr>
+<td class="tname">阮</td>
+<td>2</td>
+<td>2<span class="mut">（50%）</span></td>
+<td>0</td>
+<td>—</td>
+<td><span class="mut">—</span></td>
+<td>2</td>
+<td><span class="dn">-3.6%</span></td>
+<td><span class="mut">—</span></td>
+</tr>
+<tr>
+<td class="tname">王</td>
+<td>2</td>
+<td>2<span class="mut">（50%）</span></td>
+<td>0</td>
+<td>—</td>
+<td><span class="mut">—</span></td>
+<td>1</td>
+<td><span class="dn">-5.4%</span></td>
+<td><span class="mut">—</span></td>
+</tr>
+<tr>
+<td class="tname">廖祥安</td>
+<td>2</td>
+<td>0<span class="mut">（0%）</span></td>
+<td>0</td>
+<td>—</td>
+<td><span class="mut">—</span></td>
+<td>1</td>
+<td><span class="dn">-2.6%</span></td>
+<td><span class="mut">—</span></td>
+</tr>
+<tr>
+<td class="tname">許毓玲</td>
+<td>1</td>
+<td>1<span class="mut">（50%）</span></td>
+<td>0</td>
+<td>—</td>
+<td><span class="mut">—</span></td>
+<td>0</td>
+<td><span class="mut">—</span></td>
+<td><span class="mut">—</span></td>
+</tr>
+</tbody></table>
+<div class="rule">*賣點檢驗＝喊賣後 5 個交易日的股價漂移平均：<span class="dn">綠（負）＝賣得好</span>、<span class="up">紅（正）＝賣早了</span>。樣本少時參考即可。</div>
+
+<h2>📈 進行中追蹤</h2>
+<table><thead><tr>
+<th>老師</th><th>股票</th><th>喊單時間</th><th>進場價(+5m)</th><th>最新收盤</th><th>未實現</th><th>停損</th><th>T+1</th><th>T+5</th><th>T+20</th><th>備註</th>
+</tr></thead><tbody>
+<tr>
+<td class="tname">廖祥安</td>
+<td><b>6209</b> 今國光</td>
+<td class="mut">2026-06-10 12:52</td>
+<td>83.2</td>
+<td>81</td>
+<td><span class="dn">-2.6%</span></td>
+<td>—</td>
+<td><span class="mut">—</span></td><td><span class="mut">—</span></td><td><span class="mut">—</span></td>
+<td class="mut">目前價位85，把早盤獲利賣出的部位市價再買回</td>
+</tr>
+<tr>
+<td class="tname">王</td>
+<td><b>2408</b> 南亞科</td>
+<td class="mut">2026-06-10 11:23</td>
+<td>352</td>
+<td>333</td>
+<td><span class="dn">-5.4%</span></td>
+<td>320</td>
+<td><span class="mut">—</span></td><td><span class="mut">—</span></td><td><span class="mut">—</span></td>
+<td class="mut">今年EPS估70元，於360~365買進不用一次買足，單一持股上限20%現股操作，停損320</td>
+</tr>
+<tr>
+<td class="tname">阮</td>
+<td><b>5328</b> 華容</td>
+<td class="mut">2026-06-10 09:27</td>
+<td>47</td>
+<td>44.85</td>
+<td><span class="dn">-4.6%</span></td>
+<td>—</td>
+<td><span class="mut">—</span></td><td><span class="mut">—</span></td><td><span class="mut">—</span></td>
+<td class="mut">大家先買進基本持股</td>
+</tr>
+<tr>
+<td class="tname">阮</td>
+<td><b>4741</b> 泓瀚</td>
+<td class="mut">2026-06-10 09:17</td>
+<td>83.1</td>
+<td>80.9</td>
+<td><span class="dn">-2.6%</span></td>
+<td>—</td>
+<td><span class="mut">—</span></td><td><span class="mut">—</span></td><td><span class="mut">—</span></td>
+<td class="mut">大家在這裡買進</td>
+</tr>
+</tbody></table>
+
+<h2>🏁 已結算</h2>
+<table><thead><tr>
+<th>老師</th><th>股票</th><th>進場日</th><th>進場價</th><th>出場日</th><th>出場價</th><th>報酬</th><th>持有</th><th>出場原因</th>
+</tr></thead><tbody>
+<tr><td colspan="9" class="mut">（尚無已結算的單）</td></tr>
+</tbody></table>
+
+<h2>🔍 賣出點檢驗（無對應持倉的出場喊單）</h2>
+<table><thead><tr>
+<th>老師</th><th>股票</th><th>喊賣時間</th><th>類型</th><th>賣價(+5m)</th><th>後1日</th><th>後5日</th><th>評語</th>
+</tr></thead><tbody>
+<tr>
+<td class="tname">許毓玲</td>
+<td><b>6127</b> 九豪</td>
+<td class="mut">2026-06-10 12:52</td>
+<td>出場</td>
+<td>79.4</td>
+<td><span class="mut">—</span></td>
+<td><span class="mut">—</span></td>
+<td>—</td>
+</tr>
+<tr>
+<td class="tname">王</td>
+<td><b>6282</b> 康舒</td>
+<td class="mut">2026-06-10 11:23</td>
+<td>出場</td>
+<td>62.5</td>
+<td><span class="mut">—</span></td>
+<td><span class="mut">—</span></td>
+<td>—</td>
+</tr>
+<tr>
+<td class="tname">廖祥安</td>
+<td><b>6209</b> 今國光</td>
+<td class="mut">2026-06-10 09:46</td>
+<td>減碼</td>
+<td>89.1</td>
+<td><span class="mut">—</span></td>
+<td><span class="mut">—</span></td>
+<td>—</td>
+</tr>
+</tbody></table>
+
+<h2>📣 報喜／續抱紀錄（不入帳，只計報喜率）</h2>
+<table><thead><tr>
+<th>老師</th><th>股票</th><th>時間</th><th>類型</th><th>原文摘要</th>
+</tr></thead><tbody>
+<tr>
+<td class="tname">許毓玲</td>
+<td><b>6127</b> 九豪</td>
+<td class="mut">2026-06-10 11:55</td>
+<td>報喜</td>
+<td class="mut">昨亮燈漲停今續漲7%，看好被動元件漲價效應，獲利續抱</td>
+</tr>
+<tr>
+<td class="tname">王</td>
+<td><b>6173</b> 信昌電</td>
+<td class="mut">2026-06-10 11:23</td>
+<td>報喜</td>
+<td class="mut">連續漲停創新高253元，波段獲利175%，獲利續抱</td>
+</tr>
+<tr>
+<td class="tname">王</td>
+<td><b>8043</b> 蜜望實</td>
+<td class="mut">2026-06-10 11:23</td>
+<td>報喜</td>
+<td class="mut">連續漲停創新高211.5元，波段獲利85%，獲利續抱</td>
+</tr>
+<tr>
+<td class="tname">阮</td>
+<td><b>2327</b> 國巨</td>
+<td class="mut">2026-06-10 09:35</td>
+<td>報喜</td>
+<td class="mut">漲停板908再創新高，獲利續抱</td>
+</tr>
+<tr>
+<td class="tname">阮</td>
+<td><b>8043</b> 蜜望實</td>
+<td class="mut">2026-06-10 09:34</td>
+<td>報喜</td>
+<td class="mut">再度漲停，第4根漲停板，恭喜大家大賺</td>
+</tr>
+</tbody></table>
+
+<div class="disclaimer">本頁為投資群組訊息的<b>事後模擬追蹤</b>，僅供檢驗喊單品質參考，非投資建議。成交價為喊單後 5 分鐘之 1 分 K 收盤價假設值，與實際可成交價可能有差異；未計入手續費（0.1425%×2）與證交稅（0.3%）。紅漲綠跌（台股慣例）。</div>
+</div></body></html>
