@@ -39,7 +39,7 @@
   header.masthead { padding: 52px 0 36px; border-bottom: 3px solid var(--rule-strong); }
   .kicker {
     font-family: var(--sans);
-    font-size: 12.5px; letter-spacing: .32em; text-transform: uppercase;
+    font-size: 12.5px; letter-spacing: .32em;
     color: var(--accent); font-weight: 700; margin-bottom: 20px;
   }
   h1 {
@@ -69,6 +69,23 @@
   }
   .lede .file { font-family: var(--serif); font-style: italic; }
 
+  /* ---------- Glossary ---------- */
+  .glossary {
+    margin: 28px 0 0;
+    border: 1px solid var(--rule); background: #fff;
+    padding: 18px 22px 14px;
+  }
+  .glossary .g-title {
+    font-size: 12px; letter-spacing: .22em; color: var(--accent);
+    font-weight: 800; margin-bottom: 10px;
+  }
+  .glossary dl {
+    display: grid; grid-template-columns: 11em 1fr; gap: 8px 16px;
+    font-size: 14px; line-height: 1.75;
+  }
+  .glossary dt { font-weight: 700; }
+  .glossary dd { color: var(--ink-soft); }
+
   /* ---------- Hero stats ---------- */
   .statgrid {
     display: grid; grid-template-columns: repeat(3, 1fr);
@@ -77,7 +94,7 @@
   }
   .stat { padding: 18px 18px 16px; border-left: 1px solid var(--rule); }
   .stat:first-child { border-left: none; padding-left: 0; }
-  .stat .label { font-size: 12px; letter-spacing: .14em; color: var(--muted); text-transform: uppercase; }
+  .stat .label { font-size: 12px; letter-spacing: .08em; color: var(--muted); }
   .stat .value { font-family: var(--serif); font-size: 30px; line-height: 1.25; margin-top: 4px; font-variant-numeric: tabular-nums; }
   .stat .value.red { color: var(--accent); }
   .stat .note { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
@@ -120,6 +137,7 @@
     flex: none;
     font-family: var(--sans); font-weight: 800; font-size: 12px; letter-spacing: .14em;
     background: var(--accent); color: #fff; padding: 4px 10px; margin-top: 4px;
+    white-space: nowrap;
   }
   .fragile-banner b { color: var(--accent-deep); }
 
@@ -174,7 +192,7 @@
   .card .badge {
     font-family: var(--serif); font-size: 30px; color: var(--accent); line-height: 1;
   }
-  .card .role { font-size: 12px; letter-spacing: .16em; color: var(--muted); text-transform: uppercase; margin-top: 8px; }
+  .card .role { font-size: 12px; letter-spacing: .16em; color: var(--muted); margin-top: 8px; }
   .card h3 { margin: 4px 0 12px; font-size: 18.5px; line-height: 1.5; }
   .card .kstats { display: flex; flex-wrap: wrap; gap: 6px 18px; padding: 10px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin-bottom: 12px; }
   .card .kstats span { font-size: 13px; color: var(--muted); }
@@ -219,7 +237,7 @@
     background: var(--ink); color: #ece8df;
     padding: 30px 30px 24px; margin-top: 8px;
   }
-  .action-panel .ap-kicker { font-size: 12px; letter-spacing: .26em; color: #cfa6ab; text-transform: uppercase; margin-bottom: 10px; }
+  .action-panel .ap-kicker { font-size: 12px; letter-spacing: .26em; color: #cfa6ab; margin-bottom: 10px; }
   .action-panel .ap-lede { font-family: var(--serif); font-size: 17.5px; line-height: 1.85; margin-bottom: 6px; }
   .action-panel .ap-lede strong { color: #fff; }
   .action-panel .ap-lede .px { color: #e9c3c9; font-variant-numeric: tabular-nums; }
@@ -245,7 +263,6 @@
     font-size: 13.5px; color: var(--muted); line-height: 1.9; font-style: italic;
     font-family: var(--serif);
   }
-  .method code { font-style: normal; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 12.5px; background: var(--paper-deep); padding: 1px 5px; }
   footer.colophon {
     margin-top: 36px; padding-top: 18px; border-top: 1px solid var(--rule);
     font-size: 12.5px; color: var(--muted); letter-spacing: .04em;
@@ -261,6 +278,8 @@
     .statgrid { grid-template-columns: 1fr; }
     .stat { border-left: none; border-top: 1px solid var(--rule); padding-left: 0; }
     .stat:first-child { border-top: none; }
+    .glossary dl { grid-template-columns: 1fr; gap: 2px 0; }
+    .glossary dd { margin-bottom: 8px; }
     .cards { grid-template-columns: 1fr; }
     .barrow { grid-template-columns: 1fr; gap: 6px; }
     .barrow .blabel { font-weight: 600; }
@@ -308,40 +327,60 @@
 <div class="page">
 
 <header class="masthead">
-  <div class="kicker">量化回測研究 · Quantitative Backtest Study</div>
+  <div class="kicker">歷史股價模擬研究</div>
   <h1><span class="ticker">6446 藥華藥</span><br>高報酬版進出場研究</h1>
-  <p class="deck">想要更高報酬，不是換更聰明的訊號，而是換出場方式抱住巨獸。</p>
+  <p class="deck">想賺更多，重點不是找更聰明的買點，而是換一種賣法，把難得的大行情抱好抱滿。</p>
   <div class="meta-line">
     <span>研究日期 <b>2026-06-11</b></span>
-    <span>樣本 <b>25 條候選 → 8 條對抗性覆核</b></span>
-    <span>判定 <b style="color:var(--accent)">8 條全 FRAGILE</b></span>
+    <span>測過 <b>25 套打法，8 套交叉驗算</b></span>
+    <span>結論 <b style="color:var(--accent)">8 套全屬「體質脆弱」</b></span>
     <span><b style="color:var(--accent-deep)">回測為模擬・非投資建議</b></span>
   </div>
-  <p class="lede">接續<span class="file">《6446勝率研究.md》</span>（基準：漲停且&gt;MA60 → T+20，勝率 78.6%、平均 +21.1%）。本篇目標：<strong>平均報酬更高的版本</strong>。13 個獨立代理探勘 25 條候選 → 8 條進入對抗性覆核（覆核者只看規則描述、獨立重寫程式驗算）。</p>
+  <p class="lede">接續<span class="file">《6446 勝率研究》</span>。原版打法很單純：<strong>股價漲停、而且站上季線的隔天開盤買進，抱 20 個交易日（約一個月）賣出</strong>——歷史上出手 14 次、平均一筆賺 +21.1%、勝率 78.6%。本篇要回答：<strong>有沒有平均賺更多的版本？</strong>做法是先用 13 個獨立的 AI 分頭測 25 套打法，挑出 8 套，再由另一批 AI 只看規則、自己重寫程式重算一遍，數字對得起來才算數。</p>
+
+  <div class="glossary">
+    <div class="g-title">先看懂四個詞</div>
+    <dl>
+      <dt>回測</dt>
+      <dd>用過去的歷史股價模擬「如果當時照這套規則買賣，會賺還是賠」。是模擬，不保證未來。</dd>
+      <dt>漲停</dt>
+      <dd>台股一天最多漲 10%，漲到頂就叫漲停。本研究的買點都從「漲停的隔天」開始。</dd>
+      <dt>季線</dt>
+      <dd>最近 60 個交易日收盤價的平均（60 日均線）。股價站上季線，通常代表中期趨勢偏多。</dd>
+      <dt>高點回跌 20% 才賣</dt>
+      <dd>不設獲利目標、也不設期限：買進後股價創的最高點往下跌 20%，才賣出。行情愈走愈高，賣點也跟著愈墊愈高。（術語叫「移動停損」）</dd>
+      <dt>勝率</dt>
+      <dd>出手 10 次，有幾次是賺錢的。勝率 78.6% ≈ 十次約八次賺。</dd>
+      <dt>月線</dt>
+      <dd>最近 20 個交易日收盤價的平均（20 日均線），比季線短、反應快。</dd>
+      <dt>做多</dt>
+      <dd>看好會漲而買進（相對於「做空」＝賭它會跌）。本頁所有打法都是做多。</dd>
+    </dl>
+  </div>
 
   <div class="statgrid">
     <div class="stat">
-      <div class="label">同樣漲停進場・T+20 出</div>
+      <div class="label">漲停隔天買・抱 1 個月就賣</div>
       <div class="value">平均 +16.8%</div>
-      <div class="note">同口徑對比：T+20 出（無 MA60 濾網）</div>
+      <div class="note">為了跟右邊「只換賣法」公平比較，這版刻意不加季線條件，所以比原版的 +21.1% 低</div>
     </div>
     <div class="stat">
-      <div class="label">同樣漲停進場・移動停損 20% 出</div>
+      <div class="label">漲停隔天買・高點回跌 20% 才賣</div>
       <div class="value red">平均 +33.1%</div>
-      <div class="note">換出場方式抱住巨獸</div>
+      <div class="note">同一個買點，只換賣法，平均多賺一倍</div>
     </div>
     <div class="stat">
-      <div class="label">代價（勝率）</div>
+      <div class="label">代價：賺錢的次數變少</div>
       <div class="value">78% → 54%</div>
-      <div class="note">中位數變薄、持有期拉長 4 倍</div>
+      <div class="note">十次賺八次變十次賺五次，抱的時間也變 4 倍長</div>
     </div>
   </div>
 
   <nav class="toc" aria-label="目錄">
     <ol>
       <li><a href="#sec1"><span class="n">01</span>一句話結論</a></li>
-      <li><a href="#sec2"><span class="n">02</span>最誠實的比較表</a></li>
-      <li><a href="#sec3"><span class="n">03</span>推薦的高報酬打法</a></li>
+      <li><a href="#sec2"><span class="n">02</span>最誠實的比較</a></li>
+      <li><a href="#sec3"><span class="n">03</span>四種打法怎麼選</a></li>
       <li><a href="#sec4"><span class="n">04</span>反直覺發現</a></li>
       <li><a href="#sec5"><span class="n">05</span>誠實聲明（必讀）</a></li>
       <li><a href="#sec6"><span class="n">06</span>目前持倉對應位置</a></li>
@@ -353,80 +392,80 @@
 <section id="sec1">
   <div class="sec-head"><span class="sec-num">第 01 節</span><h2>一句話結論</h2></div>
   <div class="conclusion">
-    <p><strong>8 條高報酬策略全部「可精確重現、無前視偏誤」，但全部被判 FRAGILE — 因為 6446 的高報酬在結構上就是靠右尾巨獸（2021-10 BESREMi 行情那種 +250~300% 的單筆）撐起來的。</strong>想要更高報酬，不是換更聰明的訊號，而是<strong>換出場方式抱住巨獸</strong>：同樣的漲停進場，T+20 出平均 +16.8%，移動停損 20% 出平均 +33.1%。代價是勝率從 ~78% 掉到 ~54%、中位數變薄、持有期拉長 4 倍。<strong>「勝率高」和「報酬高」在這檔股票上是兩個結構上不同的目標，魚與熊掌。</strong></p>
+    <p><strong>8 套高報酬打法的數字全部經得起獨立重算、也沒有「偷看未來資料」的作弊，但全部被判「體質脆弱」</strong>——因為 6446 的高報酬，本來就是靠少數幾筆超級大獲利撐起來的（像 2021 年 10 月新藥 BESREMi 行情那種一筆 +250%～300% 的「巨獸單」）。想賺更多，重點不是找更聰明的買點，而是<strong>換一種賣法把巨獸抱好抱滿</strong>：同樣是漲停隔天買進，抱一個月就賣平均 +16.8%；改成「高點回跌 20% 才賣」，平均 +33.1%。代價是勝率從約 78% 掉到約 54%、多數時候賺得很薄、抱的時間拉長四倍。<strong>在這檔股票上，「常常賺」和「賺很大」是兩個不同的目標，魚與熊掌。</strong></p>
   </div>
   <div class="fragile-banner">
-    <span class="tag">FRAGILE</span>
-    <div>8 條策略全數可重現、無前視偏誤，但<b>平均報酬皆依賴 1–3 筆右尾巨獸單</b>。本研究的全部結論建立在「BESREMi 等級事件會再發生」的隱含假設之上 — 詳見第 05 節誠實聲明。</div>
+    <span class="tag">體質脆弱</span>
+    <div>8 套打法的回測數字都可重現、沒有作弊，但<b>平均獲利都依賴其中 1～3 筆巨獸單</b>。整份研究背後藏著一個前提：「BESREMi 等級的大事件，未來還會再發生」——詳見第 05 節誠實聲明。</div>
   </div>
 </section>
 
 <!-- ============ 02 比較表 ============ -->
 <section id="sec2">
-  <div class="sec-head"><span class="sec-num">第 02 節</span><h2>最誠實的比較表：剔除各自最大一筆後（trimmed）</h2></div>
-  <p>每條策略都把獲利最大的一筆刪掉再算 — 這是「下一次沒有 BESREMi 等級行情」情境下的期望：</p>
+  <div class="sec-head"><span class="sec-num">第 02 節</span><h2>最誠實的比較：把最好的那一筆拿掉再比</h2></div>
+  <p>每套打法都把獲利最大的那一筆刪掉、重新算平均。這是在回答一個問題：<strong>「如果下次沒有出現 BESREMi 等級的大行情，這套打法還剩下多少？」</strong></p>
 
   <div class="table-scroll">
     <table>
       <thead>
-        <tr><th>策略</th><th>n</th><th>勝率</th><th>平均</th><th>剔最大後平均</th><th>中位</th><th>最差</th><th>持有</th><th>年化貢獻</th></tr>
+        <tr><th>打法</th><th>出手次數</th><th>勝率</th><th>平均報酬</th><th>拿掉最好一筆後</th><th>最典型一筆</th><th>最慘一筆</th><th>抱多久*</th><th>平均一年貢獻</th></tr>
       </thead>
       <tbody>
-        <tr><td>基準：漲停&gt;MA60 → T+20</td><td>14</td><td>78.6%</td><td>+21.1%</td><td>+9.3%</td><td>+11.3%</td><td>-5.8%</td><td>20根</td><td>~+28%/年</td></tr>
-        <tr class="hl"><td><strong>漲停&gt;MA60 → T+60</strong></td><td>8</td><td>75%</td><td>+28.2%</td><td class="key">+20.4%</td><td>—</td><td>-25.9%</td><td>60根</td><td>~+23%/年</td></tr>
-        <tr><td>漲停(無濾) → 移動停損20%</td><td>13</td><td>53.8%</td><td>+33.1%</td><td>+11.1%</td><td>+3.3%</td><td>-19.5%</td><td>81根</td><td class="key">~+41%/年</td></tr>
-        <tr><td>漲停&gt;MA60 → 混合出場*</td><td>10</td><td>60%</td><td>+26.8%</td><td>+11.8%</td><td>+3.6%</td><td>-20.2%</td><td>38根</td><td>~+26%/年</td></tr>
-        <tr><td>BB下軌回收+回檔30% → T+60</td><td>13</td><td>69.2%</td><td>+35.1%</td><td>+15.5%</td><td>+7.8%</td><td>-20.0%</td><td>57根</td><td>~+44%/年</td></tr>
-        <tr><td>11月→1月跨年持有</td><td>10</td><td>70%</td><td>+26.8%</td><td>+7.9%</td><td>+7.2%</td><td>-11.9%</td><td>60根</td><td>~+26%/年</td></tr>
+        <tr><td>原版：漲停＋站上季線，抱 20 天</td><td>14</td><td>78.6%</td><td>+21.1%</td><td>+9.3%</td><td>+11.3%</td><td>-5.8%</td><td>20 天</td><td>~+28%/年</td></tr>
+        <tr class="hl"><td><strong>升級版：同樣買點，抱 60 天</strong></td><td>8</td><td>75%</td><td>+28.2%</td><td class="key">+20.4%</td><td>—</td><td>-25.9%</td><td>60 天</td><td>~+23%/年</td></tr>
+        <tr><td>漲停隔天買，高點回跌 20% 才賣</td><td>13</td><td>53.8%</td><td>+33.1%</td><td>+11.1%</td><td>+3.3%</td><td>-19.5%</td><td>81 天</td><td class="key">~+41%/年</td></tr>
+        <tr><td>漲停＋季線，混合式賣法**</td><td>10</td><td>60%</td><td>+26.8%</td><td>+11.8%</td><td>+3.6%</td><td>-20.2%</td><td>38 天</td><td>~+26%/年</td></tr>
+        <tr><td>崩跌後回穩才接，抱 60 天</td><td>13</td><td>69.2%</td><td>+35.1%</td><td>+15.5%</td><td>+7.8%</td><td>-20.0%</td><td>57 天</td><td>~+44%/年</td></tr>
+        <tr><td>11 月買、隔年 1 月賣</td><td>10</td><td>70%</td><td>+26.8%</td><td>+7.9%</td><td>+7.2%</td><td>-11.9%</td><td>60 天</td><td>~+26%/年</td></tr>
       </tbody>
     </table>
   </div>
-  <p class="tfoot-note">* 混合出場 = 前 20 根只掛 -15% 災難線，第 20 根起改移動停損 15%。</p>
+  <p class="tfoot-note">* 「天」皆指交易日（20 個交易日約等於 1 個月）。&nbsp;&nbsp;** 混合式賣法＝買進後前 20 天只設「跌破買價 85 折就認賠」的保險絲，第 20 天起改成「高點回跌 15% 就賣」。&nbsp;&nbsp;「平均一年貢獻」＝把歷史模擬獲利攤平到每一年的概算，<b>不是利率、更不是每年保證</b>——實際上是某幾年大賺、多數年份小賺小賠平均出來的。升級版的「最典型一筆」原始研究未提供，故留空（—）。</p>
 
   <figure class="bars">
-    <figcaption>平均 vs 剔最大後平均 — 巨獸依賴度一眼看穿</figcaption>
+    <figcaption>平均報酬 vs 拿掉最好一筆後——誰在靠巨獸撐場面，一眼看穿</figcaption>
     <div class="legend">
       <span><span class="sw avg"></span>平均報酬</span>
-      <span><span class="sw trim"></span>剔最大後平均（沒有巨獸的世界）</span>
-      <span>條長以全場最高平均 +35.1% 為 100%</span>
+      <span><span class="sw trim"></span>拿掉最好一筆後的平均</span>
+      <span>條長以全場最高的 +35.1% 為 100%</span>
     </div>
     <div class="barrow">
-      <div class="blabel">基準：漲停&gt;MA60 → T+20</div>
+      <div class="blabel">原版：漲停＋季線，抱 20 天</div>
       <div class="barpair">
         <div class="bar avg"><span class="fill" style="width:60.1%"></span><span class="v">+21.1%</span></div>
         <div class="bar trim"><span class="fill" style="width:26.5%"></span><span class="v">+9.3%</span></div>
       </div>
     </div>
     <div class="barrow">
-      <div class="blabel"><strong>漲停&gt;MA60 → T+60</strong></div>
+      <div class="blabel"><strong>升級版：同樣買點，抱 60 天</strong></div>
       <div class="barpair">
         <div class="bar avg"><span class="fill" style="width:80.3%"></span><span class="v">+28.2%</span></div>
-        <div class="bar trim"><span class="fill" style="width:58.1%"></span><span class="v">+20.4%（trimmed 全場最穩）</span></div>
+        <div class="bar trim"><span class="fill" style="width:58.1%"></span><span class="v">+20.4%（拿掉巨獸後全場最穩）</span></div>
       </div>
     </div>
     <div class="barrow">
-      <div class="blabel">漲停(無濾) → 移動停損20%</div>
+      <div class="blabel">漲停隔天買，高點回跌 20% 才賣</div>
       <div class="barpair">
         <div class="bar avg"><span class="fill" style="width:94.3%"></span><span class="v">+33.1%</span></div>
         <div class="bar trim"><span class="fill" style="width:31.6%"></span><span class="v">+11.1%</span></div>
       </div>
     </div>
     <div class="barrow">
-      <div class="blabel">漲停&gt;MA60 → 混合出場</div>
+      <div class="blabel">漲停＋季線，混合式賣法</div>
       <div class="barpair">
         <div class="bar avg"><span class="fill" style="width:76.4%"></span><span class="v">+26.8%</span></div>
         <div class="bar trim"><span class="fill" style="width:33.6%"></span><span class="v">+11.8%</span></div>
       </div>
     </div>
     <div class="barrow">
-      <div class="blabel">BB下軌回收+回檔30% → T+60</div>
+      <div class="blabel">崩跌後回穩才接，抱 60 天</div>
       <div class="barpair">
         <div class="bar avg"><span class="fill" style="width:100%"></span><span class="v">+35.1%</span></div>
         <div class="bar trim"><span class="fill" style="width:44.2%"></span><span class="v">+15.5%</span></div>
       </div>
     </div>
     <div class="barrow">
-      <div class="blabel">11月→1月跨年持有</div>
+      <div class="blabel">11 月買、隔年 1 月賣</div>
       <div class="barpair">
         <div class="bar avg"><span class="fill" style="width:76.4%"></span><span class="v">+26.8%</span></div>
         <div class="bar trim"><span class="fill" style="width:22.5%"></span><span class="v">+7.9%</span></div>
@@ -434,63 +473,64 @@
     </div>
   </figure>
 
-  <p><strong>Trimmed 基準上真正勝出的是「漲停&gt;MA60 → T+60」（+20.4% vs 基準 +9.3%）</strong>：拉長持有吃到的是真實的事件後長尾，且這條不靠 +174% 那筆（去重疊機制讓 2021-08 進場單直接抱過 BESREMi 行情）。代價：最差一筆 -25.9%（2025-01）。</p>
+  <p><strong>把最好的一筆拿掉之後，真正勝出的是「升級版：同樣買點，抱 60 天」——還剩 +20.4%，原版只剩 +9.3%。</strong>多抱的那段時間，吃到的是大事件之後貨真價實的延續行情。而且這 8 筆裡並沒有 2021 年那筆 +174% 的巨獸單（規則設計上，那段大行情由更早買進的一筆涵蓋，沒有重複算進來），成績相對乾淨。代價：最慘的一筆 -25.9%，發生在 2025 年 1 月。</p>
 </section>
 
 <!-- ============ 03 推薦打法 ============ -->
 <section id="sec3">
-  <div class="sec-head"><span class="sec-num">第 03 節</span><h2>推薦的高報酬打法（按用途）</h2></div>
+  <div class="sec-head"><span class="sec-num">第 03 節</span><h2>四種打法怎麼選（按用途）</h2></div>
   <div class="cards">
 
     <article class="card">
       <div class="badge">A</div>
-      <div class="role">報酬升級主推</div>
-      <h3>漲停&gt;MA60 → T+60 收盤出 + -20% 災難線</h3>
+      <div class="role">主推・原版的直接升級</div>
+      <h3>漲停＋站上季線的隔天買 → 抱 60 個交易日（約 3 個月）賣，外加「跌破買價 8 折就認賠」的保險絲</h3>
       <div class="kstats">
         <span>平均<b>+28.2%</b></span>
-        <span>剔最大後<b>+20.4%</b></span>
-        <span>最差<b>-25.9%</b></span>
-        <span>資金效率<b>0.47%/日</b></span>
+        <span>拿掉最好一筆<b>+20.4%</b></span>
+        <span>最慘一筆<b>-25.9%</b></span>
+        <span>平均每天賺<b>0.47%</b></span>
       </div>
-      <p>基準的直接升級：進場完全相同，只是抱 60 根而不是 20 根。平均 +28.2%、<strong>剔除最大單後仍 +20.4%（全場最穩的 trimmed 數字）</strong>。接受兩件事：最差 -25.9%、資金被佔用三倍久（資金效率 0.47%/日 vs 基準 1.06%/日）。</p>
+      <p>買的時機和原版一模一樣，只是從抱 1 個月改成抱 3 個月。平均 +28.2%，<strong>就算把最好的一筆拿掉也還有 +20.4%——全場最不依賴巨獸的成績</strong>。要接受兩件事：最慘的一筆賠 25.9%；錢被卡住的時間是原版的三倍（「平均每天賺 0.47%、原版 1.06%」是資金效率的換算，不是每天真的有錢進帳）。</p>
     </article>
 
     <article class="card">
       <div class="badge">B</div>
-      <div class="role">抱巨獸版</div>
-      <h3>漲停隔日買 → 移動停損 20%（無時間上限）</h3>
+      <div class="role">抱巨獸版・賭大行情</div>
+      <h3>漲停隔天買 → 高點回跌 20% 才賣（不設期限）</h3>
       <div class="kstats">
         <span>平均<b>+33.1%</b></span>
         <span>勝率<b>53.8%</b></span>
-        <span>中位<b>+3.3%</b></span>
-        <span>年化貢獻<b>~+41%/年</b></span>
+        <span>最典型一筆<b>+3.3%</b></span>
+        <span>平均一年貢獻<b>~+41%/年</b></span>
       </div>
-      <p>平均 +33.1%、年化貢獻全場最高（~+41%/年）。但勝率只有 53.8%、中位數 +3.3% — <strong>平庸的年份你會一直小輸小贏，這條規則的全部意義是某一年抱到 +297%</strong>。執行紀律要求極高：平均持有 81 根、最長 228 根，途中 -19% 也不能手動出場。移動停損測過 16%~25%：<strong>20% 是甜蜜點</strong>（25% 太鬆會吐回、MA10/MA20 跌破出太緊會被洗）。</p>
+      <p>平均報酬和一年貢獻都是全場最高，但十次只賺五次多一點，而且最典型的一筆只賺 +3.3%——<strong>平凡的年份會一直小輸小贏，這套打法的全部意義，是某一年讓你抱到一筆 +297%</strong>。最考驗紀律：平均要抱 4 個月、最長將近一年，途中帳面一度賠 19% 也不能心軟先賣。回跌門檻 16%～25% 都測過：<strong>20% 最剛好</strong>（25% 太鬆、獲利會吐回去；改用均線當賣點又太緊，常常還沒等到行情就先被迫賣掉）。</p>
     </article>
 
     <article class="card">
       <div class="badge">C</div>
-      <div class="role">互補時機・崩跌接刀長抱</div>
-      <h3>BB 下軌外 2 日收回 + 距一年高點回檔&gt;30% → T+60 + -20%災難線</h3>
+      <div class="role">互補時機・崩跌後撿便宜</div>
+      <h3>恐慌殺過頭後剛回穩、且距一年高點已跌超過 30% → 買進抱 60 個交易日，外加 8 折保險絲</h3>
       <div class="kstats">
-        <span>p_win<b>0.05</b></span>
-        <span>p_avg<b>0.006</b></span>
-        <span>樣本<b>13 筆／7 年份</b></span>
-        <span>敏感度<b>15 變體全正</b></span>
+        <span>出手<b>13 次／7 個年份</b></span>
+        <span>純屬巧合的機率<b>勝率 5%・平均 0.6%</b></span>
+        <span>參數微調 15 種<b>全數獲利</b></span>
+        <span>近年典型一筆<b>+8%</b></span>
       </div>
-      <p>唯一 p_win=0.05 與 p_avg=0.006 <strong>雙顯著</strong>的高報酬規則，13 筆分布 7 個年份。和漲停法時機完全互補（一個買突破、一個買崩跌），理論上可同組合並存。參數敏感度 15 個變體全為正（+23%~+43%）。弱點：現代樣本勝率掉到 57%、典型一筆只有 +8%。</p>
+      <p>統計上<strong>唯一「勝率」和「平均報酬」兩項都站得住腳的打法</strong>（兩個成績純屬巧合的機率分別只有 5% 和 0.6%），13 次出手分散在 7 個年份、不是押中某一年。它買在崩跌、漲停法買在大漲衝出去的時候，<strong>時機完全互補</strong>，可以同時放在投資組合裡。把參數上下微調出 15 種變化，全部仍然賺錢（+23%～+43%），不是剛好調出來的好數字。弱點：近年勝率降到 57%，典型一筆只賺 +8%——「巧合機率低」說的是「不太可能純靠運氣」，不等於「幾乎穩賺」。</p>
     </article>
 
     <article class="card">
       <div class="badge">D</div>
-      <div class="role">日曆疊加</div>
+      <div class="role">日曆效應・加碼時點參考</div>
       <h3>11 月效應</h3>
       <div class="kstats">
-        <span>11月勝率<b>80%</b></span>
-        <span>11月平均<b>+18.5%</b></span>
-        <span>合併版<b>n=20, p_win=0.003</b></span>
+        <span>11 月做多勝率<b>80%</b></span>
+        <span>11 月平均<b>+18.5%</b></span>
+        <span>6月＋11月合併出手<b>20 次</b></span>
+        <span>純屬巧合的機率<b>0.3%</b></span>
       </div>
-      <p>2016 年以來 <strong>11 月做多勝率 80%、平均 +18.5%</strong>（10 月是最爛月份 20% 勝率 — 反差支持「ASH 醫學年會摘要公布」的事件結構；12 月勝率僅 30% = 年會見光死）。「6月+11月」合併版 n=20、p_win=0.003，是季節性裡統計最能存活的。11月→1月跨年版平均 +26.8% 但剔除 2021 FDA 那筆只剩 +7.9%。<strong>當配置時點用，別當主策略。</strong></p>
+      <p>2016 年以來，<strong>11 月做多勝率 80%、平均 +18.5%</strong>；10 月反而是最爛的月份（勝率僅 20%）。一好一壞的反差，符合「國際血液醫學年會（ASH）公布研究摘要」的行事曆節奏——12 月年會開完、利多出盡，勝率只剩 30%。「6 月＋11 月」合併計算出手 20 次、純屬巧合的機率只有 0.3%，是各種日曆規律裡最可信的一條。<strong>適合當「什麼時候加碼」的參考，不要當成主策略。</strong>11 月買、隔年 1 月賣的版本平均 +26.8%，但拿掉 2021 年那筆就只剩 +7.9%。</p>
     </article>
 
   </div>
@@ -501,24 +541,24 @@
   <div class="sec-head"><span class="sec-num">第 04 節</span><h2>反直覺發現（這次最有價值的副產品）</h2></div>
   <ol class="findings">
     <li>
-      <span class="f-title">月營收是反指標</span>
-      <p>「YoY 創 12 月新高」公告後 T+20 勝率 20%、平均 -5.9%；「YoY 連 3 月加速」勝率 21%。生技股營收市場早就定價，公告日像利多出盡。<strong>看到 6446 營收大增的新聞別追。</strong></p>
+      <span class="f-title">營收捷報反而是賣點</span>
+      <p>「營收年增率創一年新高」的公告之後一個月，勝率只有 20%、平均賠 5.9%；「年增率連三個月加速」也只有 21%。市場早就把營收行情先走完了，公告日反而像利多出盡。<strong>看到 6446 營收大增的新聞，別追。</strong></p>
     </li>
     <li>
-      <span class="f-title">動能壽命恰好 ~20 根</span>
-      <p>T+20 出場日若收盤仍 &gt;MA20 就續抱接力第二棒 — 9 次裡 7 次虧。漲停事件的超額動能在 20 個交易日內耗盡，這反而證明了基準 T+20 的出場選得對。</p>
+      <span class="f-title">漲停的衝勁，大約一個月就用完</span>
+      <p>抱滿 20 個交易日後，如果股價還站在月線上就繼續抱——歷史上 9 次有 7 次反而虧。漲停事件帶來的超漲力道大約 20 個交易日內耗盡，這反過來證明原版「抱一個月就走」的設計是對的。</p>
     </li>
     <li>
-      <span class="f-title">漲停後的 -10% 回檔歷史上全數收復（4/4）</span>
-      <p>對照組「輸家加倍攤平」實測勝率反而最高（86~91%）— 但這是馬丁格爾倖存者敘事，生技股一根 FDA 壞消息就讓雙倍曝險吃滿 -20% 跳空，<strong>只當心理參考（回檔別慌），絕不照做</strong>。</p>
+      <span class="f-title">漲停後的 -10% 回檔，歷史上 4 次全部漲回來（注意：只有 4 次，樣本很少）</span>
+      <p>對照實驗裡「愈跌愈買、跌了就加倍」的勝率反而最高（86～91%）——但那是賭徒式的加倍下注法，只要碰上一次新藥審查的壞消息，加倍買進的持股就會在「一開盤直接跳低、想賣都來不及」的行情裡吃下 -20%。<strong>只能當心理參考（回檔別慌），絕對不要照做。</strong></p>
     </li>
     <li>
-      <span class="f-title">任何停損在 6446 上都有害（再次驗證）</span>
-      <p>半倉停利+移動15% 是全場最差疊加（平均 +11.2%）；吊燈 3×ATR 持有 5-10 天就被洗掉。這檔的日內波動就是會掃停損。</p>
+      <span class="f-title">在這檔股票上，停損幾乎都是扣分（再次驗證）</span>
+      <p>各種常見的停損設計——先獲利了結一半再讓剩下的跑、照股價波動幅度抓停損點——全部讓績效變差，其中「賣一半＋高點回跌 15% 就賣」是全場最差的組合（平均只剩 +11.2%）。這檔股票平常的震盪就很大，停損線不管設在哪，都很容易被日常上下甩動碰到、害你提早賣在低點；要嘛用「時間到了就賣」，要嘛用很寬的回跌門檻。</p>
     </li>
     <li>
-      <span class="f-title">帶量突破、均線金叉、量縮打底全部無效</span>
-      <p>突破60日高+2倍量 T+20 平均只 +0.7%；月線上穿季線勝率 26-36%。6446 的大行情從「事件驅動的漲停」起漲，不從技術型態起漲。</p>
+      <span class="f-title">教科書上的技術型態，在它身上全部失靈</span>
+      <p>「帶著大成交量創 60 天新高」（之後一個月平均只 +0.7%）、月線向上穿過季線的「黃金交叉」（勝率 26～36%）、「成交量縮小慢慢打底」——統統沒用。6446 的大行情從「大事件引爆的漲停」開始，不從技術圖形開始。</p>
     </li>
   </ol>
 </section>
@@ -528,30 +568,30 @@
   <div class="sec-head"><span class="sec-num">第 05 節</span><h2>誠實聲明（必讀）</h2></div>
   <div class="honesty">
     <ul>
-      <li><strong>8 條全 FRAGILE，0 條 CONFIRMED</strong>：全部可重現、無前視、無跨 2020-03-16 資料疤痕，但平均報酬都依賴 1-3 筆巨獸。p_win 普遍不顯著（0.09~0.36）、只有 p_avg 顯著（0.005~0.08）— 這族規則贏在尾部不在勝率，與基準（贏在勝率）正好互補。</li>
-      <li><strong>策略間高度相關</strong>：五條深跌反彈規則實際上是同六次崩跌（2019/2020/2021/2023/2024/2025）的不同切面；高報酬策略都吃到 2021-10、2024-05、2025-04 同幾波。<strong>不是八份獨立證據，實戰挑 1-2 條執行即可。</strong></li>
-      <li><strong>全程約測 150+ 組合</strong>，p 值有多重檢定膨脹（訊號高度相關使有效檢定數遠小於 150，但仍需打折看待）。</li>
-      <li>隱含假設：<strong>未來還會出現 BESREMi 等級的事件</strong>（新適應症、授權、大藥廠收購傳聞）。高報酬版本買的就是這張樂透的重複發生，部位請按「中位數情境只賺 3~8%、最差 -20~26%」配置，不是按平均值配置。</li>
+      <li><strong>8 套全部「體質脆弱」，0 套達到「確認有效」。</strong>數字都經得起獨立重算、沒有偷看未來資料的作弊，但每一套的平均獲利都依賴 1～3 筆巨獸單。從統計上看：「勝率比較高」這件事，無法排除只是巧合（巧合機率 9%～36%）；比較站得住的是「平均報酬比較高」（巧合機率 0.5%～8%）。白話：<strong>這族打法贏在偶爾的大獲利，不是贏在常常猜對</strong>——正好和原版（贏在常常猜對）互補。</li>
+      <li><strong>八套打法不是八份獨立證據。</strong>它們其實都吃到同樣那幾波行情（2019、2020、2021、2023、2024、2025 的六次大跌與反彈），只是切入角度不同。實戰挑 1～2 套執行就好，全上不會更分散風險。</li>
+      <li><strong>我們前後總共測了 150 多種組合。</strong>測的種類愈多，就愈容易「碰巧」找到好看的數字——所以上面所有「純屬巧合的機率」都該再打個折扣看。</li>
+      <li>整份研究的隱含前提：<strong>未來還會出現 BESREMi 等級的大事件</strong>（同一顆藥獲准用來治新的疾病、授權合作、大藥廠收購傳聞……）。高報酬版本買的就是「這種樂透還會再開」。投入的金額請按「最典型情境只賺 3～8%、最慘賠 20～26%」來規劃，<strong>不要按平均值來規劃</strong>。</li>
     </ul>
   </div>
 </section>
 
 <!-- ============ 06 持倉行動面板 ============ -->
 <section id="sec6">
-  <div class="sec-head"><span class="sec-num">第 06 節</span><h2>📍 目前持倉對應位置（2026-06-11，收 934）</h2></div>
+  <div class="sec-head"><span class="sec-num">第 06 節</span><h2>📍 目前持倉對應位置（2026-06-11，收盤 934）</h2></div>
   <div class="action-panel">
-    <div class="ap-kicker">Position Action Panel</div>
-    <p class="ap-lede">2026-05-08 漲停訊號 → 5/11 開盤 <span class="px">725</span> 進場的那筆單，<strong>所有高報酬規則目前都還在場內</strong>（浮盈 <span class="px">+28.8%</span>，期間最高 <span class="px">1020</span>）：</p>
+    <div class="ap-kicker">持倉行動對照表</div>
+    <p class="ap-lede">2026-05-08 出現漲停訊號 → 5/11 開盤 <span class="px">725</span> 買進的那筆單，<strong>所有高報酬版規則目前都還沒到賣點</strong>（帳面獲利 <span class="px">+28.8%</span>，期間最高曾到 <span class="px">1020</span>）。注意：以下全部以 725 的買價為例——<strong>如果你的買價不同，所有賣點都要照你自己的成本重算</strong>：</p>
     <div class="table-scroll">
       <table>
-        <thead><tr><th>若你執行的是</th><th>現在該做什麼</th></tr></thead>
+        <thead><tr><th>如果你執行的是</th><th>現在該做什麼</th></tr></thead>
         <tbody>
-          <tr><td>基準 T+20</td><td><span class="chip done">完成</span>已於 6/8 收盤 <span class="num">926</span> 出場（<span class="num">+27.7%</span>）</td></tr>
-          <tr class="live"><td><strong>T+60 版（推薦A）</strong></td><td><span class="chip live">續抱</span>出場日約 <strong class="num">2026-08-03</strong> 收盤，災難線 <span class="num">580</span>（725×0.8，已遠離）</td></tr>
-          <tr class="live"><td>移動停損 20%（推薦B）</td><td><span class="chip live">續抱</span><strong>停損位 <span class="num">816</span></strong>（=1020×0.80），跌破才走</td></tr>
-          <tr class="live"><td>混合出場（已過20根）</td><td><span class="chip live">續抱</span><strong>停損位 <span class="num">867</span></strong>（=1020×0.85）</td></tr>
-          <tr><td>崩跌接刀（推薦C）</td><td><span class="chip wait">等待</span>無訊號 — 股價距一年高點僅 <span class="num">-8.4%</span>，此策略等回檔 &gt;30% 才會醒來</td></tr>
-          <tr><td>11 月效應（推薦D）</td><td><span class="chip wait">等待</span>等 <span class="num">2026-10-30</span> 收盤訊號</td></tr>
+          <tr><td>原版（抱 20 個交易日）</td><td><span class="chip done">已完成</span>已於 6/8 收盤 <span class="num">926</span> 賣出（賺 <span class="num">+27.7%</span>）</td></tr>
+          <tr class="live"><td><strong>升級版・抱 60 個交易日（主推 A）</strong></td><td><span class="chip live">續抱</span>預計 <strong class="num">2026-08-03</strong> 收盤賣出；保險絲在 <span class="num">580</span>（買價 725 的 8 折，目前股價遠在上方）</td></tr>
+          <tr class="live"><td>高點回跌 20% 才賣（B）</td><td><span class="chip live">續抱</span><strong>賣點 <span class="num">816</span></strong>（最高點 1020 × 0.8），盤中跌破就走</td></tr>
+          <tr class="live"><td>混合式賣法（已過 20 天）</td><td><span class="chip live">續抱</span><strong>賣點 <span class="num">867</span></strong>（最高點 1020 × 0.85）</td></tr>
+          <tr><td>崩跌後撿便宜（C）</td><td><span class="chip wait">等待</span>沒有訊號——股價離一年高點只跌了 <span class="num">8.4%</span>，這套要等跌超過 30% 才會醒來</td></tr>
+          <tr><td>11 月效應（D）</td><td><span class="chip wait">等待</span>等 <span class="num">2026-10-30</span> 收盤的訊號</td></tr>
         </tbody>
       </table>
     </div>
@@ -560,11 +600,11 @@
 
 <!-- ============ 方法與頁尾 ============ -->
 <div class="method">
-  方法：5 探勘代理（趨勢騎乘/訊號疊加/深度逆勢/基本面事件/部位管理）共用同一無前視架構，25 候選 → 篩 8 條 → 對抗性覆核代理獨立重寫驗算 + 參數±20%敏感度 + 剔除最大單 + 雙時代檢定。逐筆交易與全網格在 <code>scratch_*_*.py</code> / <code>scratch_*_results.csv</code>。回測為模擬，非投資建議。
+  研究方法：由 13 個獨立的 AI 程序分頭探勘 25 套打法（涵蓋趨勢、加碼、逆勢、基本面事件、部位管理五大方向），篩出 8 套後，再由另一批 AI 只看規則文字、自行重寫程式重新計算，逐筆交易互相對帳；另做參數上下微調測試、剔除最大獲利單重算、以及把資料切成前後兩個時代分別檢驗。全程使用同一套「不偷看未來資料」的架構。完整的逐筆交易紀錄與測試結果保存於研究資料夾。回測為模擬，非投資建議。
 </div>
 
 <footer class="colophon">
-  <span>資料來源：Yahoo Finance／FinMind</span>
+  <span>資料來源：Yahoo Finance／FinMind（台股公開資料庫）</span>
   <span class="disc">回測為模擬，非投資建議</span>
   <span>生成日期：2026-06-11</span>
 </footer>
