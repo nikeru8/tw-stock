@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="6446 藥華藥 高報酬版進出場研究（2026-06-11）— 回測為模擬，非投資建議">
+<title>6446 藥華藥｜高報酬進出場研究</title>
+<style>
+  :root {
+    --ink: #1d1b18;
+    --ink-soft: #44403a;
+    --muted: #6f6a60;
+    --paper: #fbfaf6;
+    --paper-deep: #f3f1ea;
+    --accent: #8e1f2f;
+    --accent-deep: #6e1624;
+    --accent-soft: #f5e8e9;
+    --rule: #d9d4c9;
+    --rule-strong: #1d1b18;
+    --good: #1f5c46;
+    --serif: Georgia, "Songti TC", "Noto Serif TC", "PMingLiU", "Times New Roman", serif;
+    --sans: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16.5px;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .topbar { height: 6px; background: var(--accent); }
+  .page { max-width: 880px; margin: 0 auto; padding: 0 28px 72px; }
+
+  /* ---------- Masthead ---------- */
+  header.masthead { padding: 52px 0 36px; border-bottom: 3px solid var(--rule-strong); }
+  .kicker {
+    font-family: var(--sans);
+    font-size: 12.5px; letter-spacing: .32em; text-transform: uppercase;
+    color: var(--accent); font-weight: 700; margin-bottom: 20px;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(34px, 6vw, 54px);
+    line-height: 1.22;
+    letter-spacing: .01em;
+  }
+  h1 .ticker { color: var(--accent); }
+  .deck {
+    font-family: var(--serif);
+    font-size: clamp(18px, 2.6vw, 22px);
+    color: var(--ink-soft);
+    margin-top: 14px; line-height: 1.7;
+  }
+  .meta-line {
+    margin-top: 26px; padding-top: 16px; border-top: 1px solid var(--rule);
+    display: flex; flex-wrap: wrap; gap: 8px 28px;
+    font-size: 13px; color: var(--muted); letter-spacing: .06em;
+  }
+  .meta-line b { color: var(--ink); font-weight: 600; }
+
+  .lede {
+    margin: 30px 0 0;
+    font-size: 17px; color: var(--ink-soft);
+  }
+  .lede .file { font-family: var(--serif); font-style: italic; }
+
+  /* ---------- Hero stats ---------- */
+  .statgrid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+    margin: 34px 0 0;
+  }
+  .stat { padding: 18px 18px 16px; border-left: 1px solid var(--rule); }
+  .stat:first-child { border-left: none; padding-left: 0; }
+  .stat .label { font-size: 12px; letter-spacing: .14em; color: var(--muted); text-transform: uppercase; }
+  .stat .value { font-family: var(--serif); font-size: 30px; line-height: 1.25; margin-top: 4px; font-variant-numeric: tabular-nums; }
+  .stat .value.red { color: var(--accent); }
+  .stat .note { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+
+  /* ---------- TOC ---------- */
+  nav.toc { margin: 30px 0 0; font-size: 14px; }
+  nav.toc ol { list-style: none; display: flex; flex-wrap: wrap; gap: 6px 26px; }
+  nav.toc a { color: var(--ink-soft); text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 1px; }
+  nav.toc a:hover { color: var(--accent); border-color: var(--accent); }
+  nav.toc .n { color: var(--accent); font-family: var(--serif); margin-right: 6px; font-variant-numeric: tabular-nums; }
+
+  /* ---------- Sections ---------- */
+  section { margin-top: 64px; }
+  .sec-head { display: flex; align-items: baseline; gap: 16px; border-bottom: 2px solid var(--rule-strong); padding-bottom: 10px; margin-bottom: 26px; }
+  .sec-num { font-family: var(--serif); font-size: 15px; color: var(--accent); letter-spacing: .08em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(24px, 4vw, 31px); line-height: 1.3; }
+  h3 { font-family: var(--serif); font-weight: 600; font-size: 19px; margin: 30px 0 10px; }
+  p { margin: 0 0 18px; }
+  strong { font-weight: 700; color: var(--ink); }
+  .small { font-size: 13.5px; color: var(--muted); }
+
+  /* ---------- Pull conclusion ---------- */
+  .conclusion {
+    font-family: var(--serif);
+    font-size: clamp(18px, 2.7vw, 21.5px);
+    line-height: 1.95;
+    color: var(--ink);
+  }
+  .conclusion p { margin-bottom: 20px; }
+  .conclusion strong { font-weight: 700; }
+  .fragile-banner {
+    margin: 26px 0 0;
+    border: 1.5px solid var(--accent);
+    background: var(--accent-soft);
+    padding: 16px 20px;
+    font-size: 15px; line-height: 1.8;
+    display: flex; gap: 14px; align-items: flex-start;
+  }
+  .fragile-banner .tag {
+    flex: none;
+    font-family: var(--sans); font-weight: 800; font-size: 12px; letter-spacing: .14em;
+    background: var(--accent); color: #fff; padding: 4px 10px; margin-top: 4px;
+  }
+  .fragile-banner b { color: var(--accent-deep); }
+
+  /* ---------- Tables ---------- */
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 6px 0 10px; }
+  table {
+    border-collapse: collapse; width: 100%; min-width: 720px;
+    font-size: 14.5px; line-height: 1.55;
+    font-variant-numeric: tabular-nums;
+  }
+  caption { text-align: left; font-size: 13px; color: var(--muted); padding-bottom: 8px; caption-side: top; }
+  thead th {
+    font-family: var(--sans); font-weight: 700; font-size: 12.5px; letter-spacing: .05em;
+    color: var(--ink-soft);
+    border-top: 2.5px solid var(--rule-strong); border-bottom: 1.5px solid var(--rule-strong);
+    padding: 10px 10px; text-align: right; white-space: nowrap;
+  }
+  thead th:first-child, tbody td:first-child { text-align: left; padding-left: 0; }
+  thead th:last-child, tbody td:last-child { padding-right: 0; }
+  tbody td { padding: 10px 10px; border-bottom: 1px solid var(--rule); text-align: right; white-space: nowrap; vertical-align: top; }
+  tbody td:first-child { white-space: normal; min-width: 15em; }
+  tbody tr.hl { background: var(--accent-soft); }
+  tbody tr.hl td { font-weight: 600; }
+  td.key { color: var(--accent-deep); font-weight: 700; }
+  .tfoot-note { font-size: 13.5px; color: var(--muted); margin-top: 4px; }
+  .tfoot-note b { color: var(--ink-soft); }
+
+  /* ---------- Bar figure ---------- */
+  figure.bars { margin: 36px 0 8px; }
+  figcaption { font-family: var(--serif); font-size: 16px; margin-bottom: 6px; color: var(--ink); }
+  .legend { display: flex; gap: 22px; font-size: 12.5px; color: var(--muted); margin-bottom: 16px; flex-wrap: wrap; }
+  .legend .sw { display: inline-block; width: 22px; height: 10px; margin-right: 7px; vertical-align: baseline; }
+  .sw.avg { background: var(--accent); }
+  .sw.trim { background: #c8bfae; }
+  .barrow { display: grid; grid-template-columns: 13.5em 1fr; gap: 0 16px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--rule); }
+  .barrow:last-of-type { border-bottom: none; }
+  .barrow .blabel { font-size: 13.5px; color: var(--ink-soft); line-height: 1.45; }
+  .barpair { display: grid; gap: 4px; }
+  .bar { height: 13px; position: relative; display: flex; align-items: center; }
+  .bar .fill { height: 100%; }
+  .bar.avg .fill { background: var(--accent); }
+  .bar.trim .fill { background: #c8bfae; }
+  .bar .v { font-size: 11.5px; color: var(--muted); margin-left: 8px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .bar.avg .v { color: var(--accent-deep); font-weight: 700; }
+
+  /* ---------- Strategy cards ---------- */
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 8px; }
+  .card {
+    background: #fff; border: 1px solid var(--rule); border-top: 3px solid var(--accent);
+    padding: 24px 24px 20px;
+  }
+  .card .badge {
+    font-family: var(--serif); font-size: 30px; color: var(--accent); line-height: 1;
+  }
+  .card .role { font-size: 12px; letter-spacing: .16em; color: var(--muted); text-transform: uppercase; margin-top: 8px; }
+  .card h3 { margin: 4px 0 12px; font-size: 18.5px; line-height: 1.5; }
+  .card .kstats { display: flex; flex-wrap: wrap; gap: 6px 18px; padding: 10px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin-bottom: 12px; }
+  .card .kstats span { font-size: 13px; color: var(--muted); }
+  .card .kstats b { font-variant-numeric: tabular-nums; color: var(--ink); font-size: 15px; display: block; font-family: var(--serif); }
+  .card p { font-size: 14.5px; line-height: 1.8; margin-bottom: 10px; color: var(--ink-soft); }
+  .card p:last-child { margin-bottom: 0; }
+  .card p strong { color: var(--ink); }
+
+  /* ---------- Findings ---------- */
+  ol.findings { list-style: none; counter-reset: f; margin-top: 4px; }
+  ol.findings li {
+    counter-increment: f; position: relative;
+    padding: 18px 0 18px 64px; border-bottom: 1px solid var(--rule);
+  }
+  ol.findings li:first-child { border-top: 2px solid var(--rule-strong); }
+  ol.findings li::before {
+    content: counter(f, decimal-leading-zero);
+    position: absolute; left: 0; top: 16px;
+    font-family: var(--serif); font-size: 26px; color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+  ol.findings .f-title { font-weight: 700; display: block; margin-bottom: 2px; }
+  ol.findings p { margin: 0; font-size: 15px; color: var(--ink-soft); }
+
+  /* ---------- Honesty box ---------- */
+  .honesty {
+    border: 2px solid var(--accent); background: #fff;
+    padding: 28px 30px 22px; position: relative;
+  }
+  .honesty::before {
+    content: "必讀"; position: absolute; top: -13px; left: 24px;
+    background: var(--accent); color: #fff; font-size: 12px; font-weight: 800;
+    letter-spacing: .22em; padding: 4px 12px 4px 14px;
+  }
+  .honesty ul { list-style: none; }
+  .honesty li { padding: 12px 0 12px 22px; position: relative; border-bottom: 1px solid var(--rule); font-size: 15px; line-height: 1.85; }
+  .honesty li:last-child { border-bottom: none; }
+  .honesty li::before { content: "▌"; position: absolute; left: 0; top: 12px; color: var(--accent); font-size: 13px; }
+
+  /* ---------- Action panel ---------- */
+  .action-panel {
+    background: var(--ink); color: #ece8df;
+    padding: 30px 30px 24px; margin-top: 8px;
+  }
+  .action-panel .ap-kicker { font-size: 12px; letter-spacing: .26em; color: #cfa6ab; text-transform: uppercase; margin-bottom: 10px; }
+  .action-panel .ap-lede { font-family: var(--serif); font-size: 17.5px; line-height: 1.85; margin-bottom: 6px; }
+  .action-panel .ap-lede strong { color: #fff; }
+  .action-panel .ap-lede .px { color: #e9c3c9; font-variant-numeric: tabular-nums; }
+  .action-panel .table-scroll { margin-top: 16px; }
+  .action-panel table { min-width: 640px; font-size: 14px; }
+  .action-panel thead th { color: #b8b2a6; border-top: 2px solid #ece8df; border-bottom: 1px solid #8a857b; }
+  .action-panel tbody td { border-bottom: 1px solid #4a463f; color: #ece8df; white-space: normal; }
+  .action-panel tbody td:first-child { min-width: 11em; }
+  .action-panel tbody td:last-child { text-align: left; min-width: 22em; }
+  .action-panel tbody tr.live td { color: #fff; }
+  .chip {
+    display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .1em;
+    padding: 2px 9px; margin-right: 8px; vertical-align: 1px; white-space: nowrap;
+  }
+  .chip.done { background: #57524a; color: #d8d3c8; }
+  .chip.live { background: var(--accent); color: #fff; }
+  .chip.wait { background: transparent; color: #b8b2a6; border: 1px solid #6f6a60; }
+  .action-panel .num { font-variant-numeric: tabular-nums; font-weight: 700; color: #f3d9dc; }
+
+  /* ---------- Method / footer ---------- */
+  .method {
+    margin-top: 64px; padding-top: 20px; border-top: 3px solid var(--rule-strong);
+    font-size: 13.5px; color: var(--muted); line-height: 1.9; font-style: italic;
+    font-family: var(--serif);
+  }
+  .method code { font-style: normal; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 12.5px; background: var(--paper-deep); padding: 1px 5px; }
+  footer.colophon {
+    margin-top: 36px; padding-top: 18px; border-top: 1px solid var(--rule);
+    font-size: 12.5px; color: var(--muted); letter-spacing: .04em;
+    display: flex; flex-wrap: wrap; gap: 6px 24px;
+  }
+  footer.colophon .disc { color: var(--accent-deep); font-weight: 700; }
+
+  /* ---------- RWD ---------- */
+  @media (max-width: 720px) {
+    body { font-size: 15.5px; }
+    .page { padding: 0 18px 56px; }
+    header.masthead { padding: 36px 0 28px; }
+    .statgrid { grid-template-columns: 1fr; }
+    .stat { border-left: none; border-top: 1px solid var(--rule); padding-left: 0; }
+    .stat:first-child { border-top: none; }
+    .cards { grid-template-columns: 1fr; }
+    .barrow { grid-template-columns: 1fr; gap: 6px; }
+    .barrow .blabel { font-weight: 600; }
+    section { margin-top: 48px; }
+    ol.findings li { padding-left: 48px; }
+    ol.findings li::before { font-size: 21px; top: 20px; }
+    .honesty { padding: 24px 18px 16px; }
+    .action-panel { padding: 24px 18px 18px; margin-left: -18px; margin-right: -18px; }
+
+    /* 寬表格：橫捲提示 + 捲動陰影 */
+    .table-scroll::before {
+      content: "⟷ 可橫向捲動";
+      display: block; font-size: 11.5px; color: var(--muted);
+      letter-spacing: .08em; padding-bottom: 4px;
+    }
+    .table-scroll {
+      background:
+        linear-gradient(to right, var(--paper) 30%, rgba(251,250,246,0)),
+        linear-gradient(to left, var(--paper) 30%, rgba(251,250,246,0)) 100% 0,
+        radial-gradient(farthest-side at 0 50%, rgba(0,0,0,.16), transparent),
+        radial-gradient(farthest-side at 100% 50%, rgba(0,0,0,.16), transparent) 100% 0;
+      background-repeat: no-repeat;
+      background-size: 40px 100%, 40px 100%, 14px 100%, 14px 100%;
+      background-attachment: local, local, scroll, scroll;
+    }
+
+    /* 行動面板表格：手機改堆疊卡片 */
+    .action-panel .table-scroll { overflow: visible; background: none; }
+    .action-panel .table-scroll::before { content: none; }
+    .action-panel table { min-width: 0; display: block; }
+    .action-panel thead { display: none; }
+    .action-panel tbody { display: block; }
+    .action-panel tbody tr { display: block; padding: 12px 0; border-bottom: 1px solid #4a463f; }
+    .action-panel tbody tr:last-child { border-bottom: none; }
+    .action-panel tbody td {
+      display: block; border: none; padding: 2px 0; text-align: left;
+      min-width: 0 !important; white-space: normal;
+    }
+    .action-panel tbody td:first-child { font-weight: 700; color: #fff; }
+  }
+</style>
+</head>
+<body>
+<div class="topbar"></div>
+<div class="page">
+
+<header class="masthead">
+  <div class="kicker">量化回測研究 · Quantitative Backtest Study</div>
+  <h1><span class="ticker">6446 藥華藥</span><br>高報酬版進出場研究</h1>
+  <p class="deck">想要更高報酬，不是換更聰明的訊號，而是換出場方式抱住巨獸。</p>
+  <div class="meta-line">
+    <span>研究日期 <b>2026-06-11</b></span>
+    <span>樣本 <b>25 條候選 → 8 條對抗性覆核</b></span>
+    <span>判定 <b style="color:var(--accent)">8 條全 FRAGILE</b></span>
+    <span><b style="color:var(--accent-deep)">回測為模擬・非投資建議</b></span>
+  </div>
+  <p class="lede">接續<span class="file">《6446勝率研究.md》</span>（基準：漲停且&gt;MA60 → T+20，勝率 78.6%、平均 +21.1%）。本篇目標：<strong>平均報酬更高的版本</strong>。13 個獨立代理探勘 25 條候選 → 8 條進入對抗性覆核（覆核者只看規則描述、獨立重寫程式驗算）。</p>
+
+  <div class="statgrid">
+    <div class="stat">
+      <div class="label">同樣漲停進場・T+20 出</div>
+      <div class="value">平均 +16.8%</div>
+      <div class="note">同口徑對比：T+20 出（無 MA60 濾網）</div>
+    </div>
+    <div class="stat">
+      <div class="label">同樣漲停進場・移動停損 20% 出</div>
+      <div class="value red">平均 +33.1%</div>
+      <div class="note">換出場方式抱住巨獸</div>
+    </div>
+    <div class="stat">
+      <div class="label">代價（勝率）</div>
+      <div class="value">78% → 54%</div>
+      <div class="note">中位數變薄、持有期拉長 4 倍</div>
+    </div>
+  </div>
+
+  <nav class="toc" aria-label="目錄">
+    <ol>
+      <li><a href="#sec1"><span class="n">01</span>一句話結論</a></li>
+      <li><a href="#sec2"><span class="n">02</span>最誠實的比較表</a></li>
+      <li><a href="#sec3"><span class="n">03</span>推薦的高報酬打法</a></li>
+      <li><a href="#sec4"><span class="n">04</span>反直覺發現</a></li>
+      <li><a href="#sec5"><span class="n">05</span>誠實聲明（必讀）</a></li>
+      <li><a href="#sec6"><span class="n">06</span>目前持倉對應位置</a></li>
+    </ol>
+  </nav>
+</header>
+
+<!-- ============ 01 一句話結論 ============ -->
+<section id="sec1">
+  <div class="sec-head"><span class="sec-num">第 01 節</span><h2>一句話結論</h2></div>
+  <div class="conclusion">
+    <p><strong>8 條高報酬策略全部「可精確重現、無前視偏誤」，但全部被判 FRAGILE — 因為 6446 的高報酬在結構上就是靠右尾巨獸（2021-10 BESREMi 行情那種 +250~300% 的單筆）撐起來的。</strong>想要更高報酬，不是換更聰明的訊號，而是<strong>換出場方式抱住巨獸</strong>：同樣的漲停進場，T+20 出平均 +16.8%，移動停損 20% 出平均 +33.1%。代價是勝率從 ~78% 掉到 ~54%、中位數變薄、持有期拉長 4 倍。<strong>「勝率高」和「報酬高」在這檔股票上是兩個結構上不同的目標，魚與熊掌。</strong></p>
+  </div>
+  <div class="fragile-banner">
+    <span class="tag">FRAGILE</span>
+    <div>8 條策略全數可重現、無前視偏誤，但<b>平均報酬皆依賴 1–3 筆右尾巨獸單</b>。本研究的全部結論建立在「BESREMi 等級事件會再發生」的隱含假設之上 — 詳見第 05 節誠實聲明。</div>
+  </div>
+</section>
+
+<!-- ============ 02 比較表 ============ -->
+<section id="sec2">
+  <div class="sec-head"><span class="sec-num">第 02 節</span><h2>最誠實的比較表：剔除各自最大一筆後（trimmed）</h2></div>
+  <p>每條策略都把獲利最大的一筆刪掉再算 — 這是「下一次沒有 BESREMi 等級行情」情境下的期望：</p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>策略</th><th>n</th><th>勝率</th><th>平均</th><th>剔最大後平均</th><th>中位</th><th>最差</th><th>持有</th><th>年化貢獻</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>基準：漲停&gt;MA60 → T+20</td><td>14</td><td>78.6%</td><td>+21.1%</td><td>+9.3%</td><td>+11.3%</td><td>-5.8%</td><td>20根</td><td>~+28%/年</td></tr>
+        <tr class="hl"><td><strong>漲停&gt;MA60 → T+60</strong></td><td>8</td><td>75%</td><td>+28.2%</td><td class="key">+20.4%</td><td>—</td><td>-25.9%</td><td>60根</td><td>~+23%/年</td></tr>
+        <tr><td>漲停(無濾) → 移動停損20%</td><td>13</td><td>53.8%</td><td>+33.1%</td><td>+11.1%</td><td>+3.3%</td><td>-19.5%</td><td>81根</td><td class="key">~+41%/年</td></tr>
+        <tr><td>漲停&gt;MA60 → 混合出場*</td><td>10</td><td>60%</td><td>+26.8%</td><td>+11.8%</td><td>+3.6%</td><td>-20.2%</td><td>38根</td><td>~+26%/年</td></tr>
+        <tr><td>BB下軌回收+回檔30% → T+60</td><td>13</td><td>69.2%</td><td>+35.1%</td><td>+15.5%</td><td>+7.8%</td><td>-20.0%</td><td>57根</td><td>~+44%/年</td></tr>
+        <tr><td>11月→1月跨年持有</td><td>10</td><td>70%</td><td>+26.8%</td><td>+7.9%</td><td>+7.2%</td><td>-11.9%</td><td>60根</td><td>~+26%/年</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="tfoot-note">* 混合出場 = 前 20 根只掛 -15% 災難線，第 20 根起改移動停損 15%。</p>
+
+  <figure class="bars">
+    <figcaption>平均 vs 剔最大後平均 — 巨獸依賴度一眼看穿</figcaption>
+    <div class="legend">
+      <span><span class="sw avg"></span>平均報酬</span>
+      <span><span class="sw trim"></span>剔最大後平均（沒有巨獸的世界）</span>
+      <span>條長以全場最高平均 +35.1% 為 100%</span>
+    </div>
+    <div class="barrow">
+      <div class="blabel">基準：漲停&gt;MA60 → T+20</div>
+      <div class="barpair">
+        <div class="bar avg"><span class="fill" style="width:60.1%"></span><span class="v">+21.1%</span></div>
+        <div class="bar trim"><span class="fill" style="width:26.5%"></span><span class="v">+9.3%</span></div>
+      </div>
+    </div>
+    <div class="barrow">
+      <div class="blabel"><strong>漲停&gt;MA60 → T+60</strong></div>
+      <div class="barpair">
+        <div class="bar avg"><span class="fill" style="width:80.3%"></span><span class="v">+28.2%</span></div>
+        <div class="bar trim"><span class="fill" style="width:58.1%"></span><span class="v">+20.4%（trimmed 全場最穩）</span></div>
+      </div>
+    </div>
+    <div class="barrow">
+      <div class="blabel">漲停(無濾) → 移動停損20%</div>
+      <div class="barpair">
+        <div class="bar avg"><span class="fill" style="width:94.3%"></span><span class="v">+33.1%</span></div>
+        <div class="bar trim"><span class="fill" style="width:31.6%"></span><span class="v">+11.1%</span></div>
+      </div>
+    </div>
+    <div class="barrow">
+      <div class="blabel">漲停&gt;MA60 → 混合出場</div>
+      <div class="barpair">
+        <div class="bar avg"><span class="fill" style="width:76.4%"></span><span class="v">+26.8%</span></div>
+        <div class="bar trim"><span class="fill" style="width:33.6%"></span><span class="v">+11.8%</span></div>
+      </div>
+    </div>
+    <div class="barrow">
+      <div class="blabel">BB下軌回收+回檔30% → T+60</div>
+      <div class="barpair">
+        <div class="bar avg"><span class="fill" style="width:100%"></span><span class="v">+35.1%</span></div>
+        <div class="bar trim"><span class="fill" style="width:44.2%"></span><span class="v">+15.5%</span></div>
+      </div>
+    </div>
+    <div class="barrow">
+      <div class="blabel">11月→1月跨年持有</div>
+      <div class="barpair">
+        <div class="bar avg"><span class="fill" style="width:76.4%"></span><span class="v">+26.8%</span></div>
+        <div class="bar trim"><span class="fill" style="width:22.5%"></span><span class="v">+7.9%</span></div>
+      </div>
+    </div>
+  </figure>
+
+  <p><strong>Trimmed 基準上真正勝出的是「漲停&gt;MA60 → T+60」（+20.4% vs 基準 +9.3%）</strong>：拉長持有吃到的是真實的事件後長尾，且這條不靠 +174% 那筆（去重疊機制讓 2021-08 進場單直接抱過 BESREMi 行情）。代價：最差一筆 -25.9%（2025-01）。</p>
+</section>
+
+<!-- ============ 03 推薦打法 ============ -->
+<section id="sec3">
+  <div class="sec-head"><span class="sec-num">第 03 節</span><h2>推薦的高報酬打法（按用途）</h2></div>
+  <div class="cards">
+
+    <article class="card">
+      <div class="badge">A</div>
+      <div class="role">報酬升級主推</div>
+      <h3>漲停&gt;MA60 → T+60 收盤出 + -20% 災難線</h3>
+      <div class="kstats">
+        <span>平均<b>+28.2%</b></span>
+        <span>剔最大後<b>+20.4%</b></span>
+        <span>最差<b>-25.9%</b></span>
+        <span>資金效率<b>0.47%/日</b></span>
+      </div>
+      <p>基準的直接升級：進場完全相同，只是抱 60 根而不是 20 根。平均 +28.2%、<strong>剔除最大單後仍 +20.4%（全場最穩的 trimmed 數字）</strong>。接受兩件事：最差 -25.9%、資金被佔用三倍久（資金效率 0.47%/日 vs 基準 1.06%/日）。</p>
+    </article>
+
+    <article class="card">
+      <div class="badge">B</div>
+      <div class="role">抱巨獸版</div>
+      <h3>漲停隔日買 → 移動停損 20%（無時間上限）</h3>
+      <div class="kstats">
+        <span>平均<b>+33.1%</b></span>
+        <span>勝率<b>53.8%</b></span>
+        <span>中位<b>+3.3%</b></span>
+        <span>年化貢獻<b>~+41%/年</b></span>
+      </div>
+      <p>平均 +33.1%、年化貢獻全場最高（~+41%/年）。但勝率只有 53.8%、中位數 +3.3% — <strong>平庸的年份你會一直小輸小贏，這條規則的全部意義是某一年抱到 +297%</strong>。執行紀律要求極高：平均持有 81 根、最長 228 根，途中 -19% 也不能手動出場。移動停損測過 16%~25%：<strong>20% 是甜蜜點</strong>（25% 太鬆會吐回、MA10/MA20 跌破出太緊會被洗）。</p>
+    </article>
+
+    <article class="card">
+      <div class="badge">C</div>
+      <div class="role">互補時機・崩跌接刀長抱</div>
+      <h3>BB 下軌外 2 日收回 + 距一年高點回檔&gt;30% → T+60 + -20%災難線</h3>
+      <div class="kstats">
+        <span>p_win<b>0.05</b></span>
+        <span>p_avg<b>0.006</b></span>
+        <span>樣本<b>13 筆／7 年份</b></span>
+        <span>敏感度<b>15 變體全正</b></span>
+      </div>
+      <p>唯一 p_win=0.05 與 p_avg=0.006 <strong>雙顯著</strong>的高報酬規則，13 筆分布 7 個年份。和漲停法時機完全互補（一個買突破、一個買崩跌），理論上可同組合並存。參數敏感度 15 個變體全為正（+23%~+43%）。弱點：現代樣本勝率掉到 57%、典型一筆只有 +8%。</p>
+    </article>
+
+    <article class="card">
+      <div class="badge">D</div>
+      <div class="role">日曆疊加</div>
+      <h3>11 月效應</h3>
+      <div class="kstats">
+        <span>11月勝率<b>80%</b></span>
+        <span>11月平均<b>+18.5%</b></span>
+        <span>合併版<b>n=20, p_win=0.003</b></span>
+      </div>
+      <p>2016 年以來 <strong>11 月做多勝率 80%、平均 +18.5%</strong>（10 月是最爛月份 20% 勝率 — 反差支持「ASH 醫學年會摘要公布」的事件結構；12 月勝率僅 30% = 年會見光死）。「6月+11月」合併版 n=20、p_win=0.003，是季節性裡統計最能存活的。11月→1月跨年版平均 +26.8% 但剔除 2021 FDA 那筆只剩 +7.9%。<strong>當配置時點用，別當主策略。</strong></p>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============ 04 反直覺發現 ============ -->
+<section id="sec4">
+  <div class="sec-head"><span class="sec-num">第 04 節</span><h2>反直覺發現（這次最有價值的副產品）</h2></div>
+  <ol class="findings">
+    <li>
+      <span class="f-title">月營收是反指標</span>
+      <p>「YoY 創 12 月新高」公告後 T+20 勝率 20%、平均 -5.9%；「YoY 連 3 月加速」勝率 21%。生技股營收市場早就定價，公告日像利多出盡。<strong>看到 6446 營收大增的新聞別追。</strong></p>
+    </li>
+    <li>
+      <span class="f-title">動能壽命恰好 ~20 根</span>
+      <p>T+20 出場日若收盤仍 &gt;MA20 就續抱接力第二棒 — 9 次裡 7 次虧。漲停事件的超額動能在 20 個交易日內耗盡，這反而證明了基準 T+20 的出場選得對。</p>
+    </li>
+    <li>
+      <span class="f-title">漲停後的 -10% 回檔歷史上全數收復（4/4）</span>
+      <p>對照組「輸家加倍攤平」實測勝率反而最高（86~91%）— 但這是馬丁格爾倖存者敘事，生技股一根 FDA 壞消息就讓雙倍曝險吃滿 -20% 跳空，<strong>只當心理參考（回檔別慌），絕不照做</strong>。</p>
+    </li>
+    <li>
+      <span class="f-title">任何停損在 6446 上都有害（再次驗證）</span>
+      <p>半倉停利+移動15% 是全場最差疊加（平均 +11.2%）；吊燈 3×ATR 持有 5-10 天就被洗掉。這檔的日內波動就是會掃停損。</p>
+    </li>
+    <li>
+      <span class="f-title">帶量突破、均線金叉、量縮打底全部無效</span>
+      <p>突破60日高+2倍量 T+20 平均只 +0.7%；月線上穿季線勝率 26-36%。6446 的大行情從「事件驅動的漲停」起漲，不從技術型態起漲。</p>
+    </li>
+  </ol>
+</section>
+
+<!-- ============ 05 誠實聲明 ============ -->
+<section id="sec5">
+  <div class="sec-head"><span class="sec-num">第 05 節</span><h2>誠實聲明（必讀）</h2></div>
+  <div class="honesty">
+    <ul>
+      <li><strong>8 條全 FRAGILE，0 條 CONFIRMED</strong>：全部可重現、無前視、無跨 2020-03-16 資料疤痕，但平均報酬都依賴 1-3 筆巨獸。p_win 普遍不顯著（0.09~0.36）、只有 p_avg 顯著（0.005~0.08）— 這族規則贏在尾部不在勝率，與基準（贏在勝率）正好互補。</li>
+      <li><strong>策略間高度相關</strong>：五條深跌反彈規則實際上是同六次崩跌（2019/2020/2021/2023/2024/2025）的不同切面；高報酬策略都吃到 2021-10、2024-05、2025-04 同幾波。<strong>不是八份獨立證據，實戰挑 1-2 條執行即可。</strong></li>
+      <li><strong>全程約測 150+ 組合</strong>，p 值有多重檢定膨脹（訊號高度相關使有效檢定數遠小於 150，但仍需打折看待）。</li>
+      <li>隱含假設：<strong>未來還會出現 BESREMi 等級的事件</strong>（新適應症、授權、大藥廠收購傳聞）。高報酬版本買的就是這張樂透的重複發生，部位請按「中位數情境只賺 3~8%、最差 -20~26%」配置，不是按平均值配置。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 06 持倉行動面板 ============ -->
+<section id="sec6">
+  <div class="sec-head"><span class="sec-num">第 06 節</span><h2>📍 目前持倉對應位置（2026-06-11，收 934）</h2></div>
+  <div class="action-panel">
+    <div class="ap-kicker">Position Action Panel</div>
+    <p class="ap-lede">2026-05-08 漲停訊號 → 5/11 開盤 <span class="px">725</span> 進場的那筆單，<strong>所有高報酬規則目前都還在場內</strong>（浮盈 <span class="px">+28.8%</span>，期間最高 <span class="px">1020</span>）：</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>若你執行的是</th><th>現在該做什麼</th></tr></thead>
+        <tbody>
+          <tr><td>基準 T+20</td><td><span class="chip done">完成</span>已於 6/8 收盤 <span class="num">926</span> 出場（<span class="num">+27.7%</span>）</td></tr>
+          <tr class="live"><td><strong>T+60 版（推薦A）</strong></td><td><span class="chip live">續抱</span>出場日約 <strong class="num">2026-08-03</strong> 收盤，災難線 <span class="num">580</span>（725×0.8，已遠離）</td></tr>
+          <tr class="live"><td>移動停損 20%（推薦B）</td><td><span class="chip live">續抱</span><strong>停損位 <span class="num">816</span></strong>（=1020×0.80），跌破才走</td></tr>
+          <tr class="live"><td>混合出場（已過20根）</td><td><span class="chip live">續抱</span><strong>停損位 <span class="num">867</span></strong>（=1020×0.85）</td></tr>
+          <tr><td>崩跌接刀（推薦C）</td><td><span class="chip wait">等待</span>無訊號 — 股價距一年高點僅 <span class="num">-8.4%</span>，此策略等回檔 &gt;30% 才會醒來</td></tr>
+          <tr><td>11 月效應（推薦D）</td><td><span class="chip wait">等待</span>等 <span class="num">2026-10-30</span> 收盤訊號</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 方法與頁尾 ============ -->
+<div class="method">
+  方法：5 探勘代理（趨勢騎乘/訊號疊加/深度逆勢/基本面事件/部位管理）共用同一無前視架構，25 候選 → 篩 8 條 → 對抗性覆核代理獨立重寫驗算 + 參數±20%敏感度 + 剔除最大單 + 雙時代檢定。逐筆交易與全網格在 <code>scratch_*_*.py</code> / <code>scratch_*_results.csv</code>。回測為模擬，非投資建議。
+</div>
+
+<footer class="colophon">
+  <span>資料來源：Yahoo Finance／FinMind</span>
+  <span class="disc">回測為模擬，非投資建議</span>
+  <span>生成日期：2026-06-11</span>
+</footer>
+
+</div>
+</body>
+</html>
