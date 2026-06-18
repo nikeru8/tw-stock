@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>玻璃基板族群全圖 ｜ 大大毛多台股</title>
+<style>
+:root{--bg:#0d1117;--panel:#161b22;--panel2:#1c2230;--bd:#2a3340;--tx:#e6edf3;--mut:#8b95a3;--acc:#3b82f6;--gold:#f5b301;--g:#27c08a;--r:#f0506e;--chip:#21304a;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:-apple-system,"PingFang TC","Microsoft JhengHei",Segoe UI,system-ui,sans-serif;line-height:1.65}
+a{color:var(--acc)}
+.wrap{max-width:1160px;margin:0 auto;padding:18px 16px 90px}
+.back{display:inline-flex;align-items:center;gap:6px;color:var(--mut);text-decoration:none;font-size:13px;margin-bottom:14px}
+.back:hover{color:var(--acc)}
+.hero{background:linear-gradient(135deg,#13203a,#161b22);border:1px solid var(--bd);border-radius:16px;padding:26px 26px 22px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-40px;top:-40px;width:220px;height:220px;background:radial-gradient(circle,rgba(59,130,246,.18),transparent 70%)}
+.hero h1{margin:0 0 6px;font-size:30px;letter-spacing:.5px}
+.hero .why{color:#cdd9ff;font-size:15px;max-width:780px}
+.hero .meta{color:var(--mut);font-size:12.5px;margin-top:10px}
+h2.sec{font-size:21px;margin:38px 0 14px;padding-left:12px;border-left:5px solid var(--acc)}
+h2.sec .s2{color:var(--mut);font-size:13px;font-weight:400;margin-left:8px}
+.note{background:var(--panel);border:1px solid var(--bd);border-radius:12px;padding:14px 18px;color:#cdd9ff;font-size:14px;margin:10px 0}
+.note b{color:var(--gold)}
+/* 架構卡 */
+.archgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.arch{background:var(--panel);border:1px solid var(--bd);border-top:4px solid var(--mut);border-radius:13px;padding:16px 18px}
+.arch.a-safe{border-top-color:var(--g)}.arch.a-mid{border-top-color:var(--gold)}.arch.a-risk{border-top-color:var(--r)}
+.archname{font-size:18px;font-weight:800}
+.archen{color:var(--mut);font-size:12px;font-weight:400;margin-left:8px;font-style:italic}
+.archrow{display:flex;gap:10px;margin-top:12px;font-size:13.5px}
+.arl{flex:0 0 92px;color:var(--mut);font-size:12px;padding-top:1px}
+.arch b{color:var(--gold)}
+/* 封裝堆疊圖 */
+.stackwrap{display:flex;gap:24px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.stack{flex:1;min-width:300px;max-width:520px}
+.layer{border:1px solid var(--bd);border-radius:8px;padding:10px 14px;margin:6px 0;font-size:13.5px;background:var(--panel)}
+.layer .ll{font-weight:700} .layer .lr{color:var(--mut);font-size:12px;float:right}
+.layer.die{background:#1d2b22;border-color:#2f5641}
+.layer.inter{background:#21304a;border-color:#33507e}
+.layer.sub{background:#2a2233;border-color:#5a3f6e}
+.layer.glass{background:#13283a;border-color:#2f6aa0;color:#bfe3ff}
+.layer.pcb{background:#161b22}
+.legend{font-size:12.5px;color:var(--mut);max-width:330px}
+.legend .gl{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+/* roadmap */
+.roadgrid{display:grid;gap:10px}
+.road{display:flex;gap:14px;background:var(--panel);border:1px solid var(--bd);border-radius:11px;padding:12px 16px}
+.rtag{flex:0 0 96px;color:var(--gold);font-weight:700;font-size:13px;border-right:1px solid var(--bd);padding-right:12px}
+.rname{font-weight:700;font-size:14.5px} .rdesc{color:var(--mut);font-size:13px;margin-top:2px}
+.rdesc b{color:#cdd9ff;font-weight:600}
+/* 環節 + 個股卡 */
+.seg{margin:18px 0 6px}
+.seghd h3{margin:0;font-size:16.5px}
+.seghd .segn{background:var(--chip);color:#bcd0f5;font-size:11.5px;font-weight:700;padding:1px 8px;border-radius:20px;margin-left:8px;vertical-align:2px}
+.segsub{color:var(--mut);font-size:12.5px;margin:2px 0 10px}
+.stkgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:9px}
+.stk{display:block;background:var(--panel);border:1px solid var(--bd);border-left:4px solid var(--mut);border-radius:9px;padding:9px 12px;text-decoration:none;color:var(--tx)}
+.stk:hover{border-color:var(--acc);background:var(--panel2)}
+.stk .top{display:flex;align-items:center;gap:6px}
+.stk .tdot{font-size:11px}
+.stk .code{color:var(--gold);font-weight:800;font-size:14px}
+.stk .nm{font-weight:700;font-size:14px}
+.stk .star{color:var(--r);font-size:13px;margin-left:auto}
+.stk .drv{display:block;color:var(--mut);font-size:12px;margin-top:4px;line-height:1.5}
+/* tier 圖例 + 今日熱度 */
+.tierleg{display:flex;gap:16px;flex-wrap:wrap;color:var(--mut);font-size:13px;margin:6px 0 2px}
+.hot{display:flex;gap:7px;flex-wrap:wrap;margin:8px 0}
+.hotchip{background:#2a1320;border:1px solid #5a2a3a;color:#ffd0dc;font-size:12.5px;padding:4px 10px;border-radius:20px;text-decoration:none}
+.hotchip:hover{border-color:var(--r)} .hotchip b{color:#fff}
+/* three / risk */
+.req{background:linear-gradient(135deg,#13251c,#161b22);border:1px solid #2f5641;border-radius:13px;padding:16px 20px;font-size:14px;margin:10px 0}
+.risk{background:#1f1418;border:1px solid #5a2a3a;border-radius:13px;padding:8px 22px;margin:10px 0}
+.risk li{margin:8px 0;font-size:13.5px} .risk b{color:#ffb3c0}
+footer{margin-top:40px;color:var(--mut);font-size:12px;text-align:center;border-top:1px solid var(--bd);padding-top:16px}
+@media(max-width:680px){.wrap{padding:12px 10px 70px}.hero h1{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="index.html">← 返回 大大毛多 台股漲幅前200</a>
+
+<div class="hero">
+  <h1>🔷 玻璃基板族群全圖</h1>
+  <div class="why">用<b>低 CTE／高平整度玻璃</b>取代 ABF 有機載板的核心與矽中介層，解決 AI 大晶片高溫 reflow 的<b>熱翹曲/脫焊</b>與大尺寸面板經濟性。6/17 由「面板廠轉面板級半導體（FOPLP）」＋群創傳台積電龍潭 TGV/CoPoS 合作點火，整條鏈齊漲。</div>
+  <div class="meta">資料日 2026-06-17（漲幅前200榜）｜共收錄 43 檔 ×7 環節｜分級：🟢核心真受惠 · 🟡次核心 · 🔴觀察/蹭題材 · ★=當日進前200｜點代碼回主站看 A–F 分析</div>
+</div>
+
+<h2 class="sec">① 三種「玻璃基板」架構 — 各自替換什麼<span class="s2">名詞常被混用，先分清</span></h2>
+<div class="archgrid"><div class="arch a-safe"><div class="archname">玻璃中介層<span class="archen">glass interposer</span></div><div class="archrow"><span class="arl">替換</span><span>替換<b>矽中介層</b>（夾在裸晶與載板之間那層）</span></div><div class="archrow"><span class="arl">對 ABF 載板廠</span><span>ABF 載板沒事、甚至互補（玻璃放在載板上面）</span></div></div><div class="arch a-mid"><div class="archname">玻璃核心載板<span class="archen">glass core substrate</span></div><div class="archrow"><span class="arl">替換</span><span>替換載板<b>中間的有機核心</b>（BT→玻璃、PTH→TGV），上下<b>還是 ABF 堆疊層</b></span></div><div class="archrow"><span class="arl">對 ABF 載板廠</span><span>這片載板還是載板廠做 → <b>轉型</b>，不是被消滅</span></div></div><div class="arch a-risk"><div class="archname">面板級 / CoPoS<span class="archen">panel-level glass</span></div><div class="archrow"><span class="arl">替換</span><span>大片玻璃上<b>直接長 RDL</b>，整合中介層＋載板功能</span></div><div class="archrow"><span class="arl">對 ABF 載板廠</span><span>最顛覆（製程移到晶圓代工 / 面板廠，從旁繞過）</span></div></div></div>
+
+<div class="stackwrap">
+  <div class="stack">
+    <div class="layer die"><span class="ll">GPU + HBM 裸晶</span></div>
+    <div class="layer inter"><span class="ll">矽中介層</span><span class="lr">玻璃中介層替換這層</span></div>
+    <div class="layer sub"><span class="ll">ABF 封裝載板</span><span class="lr">載板廠本業</span></div>
+    <div class="layer glass"><span class="ll">└ 剖面：ABF堆疊 / <b style="color:#7fd0ff">有機核心(PTH)</b> / ABF堆疊</span><span class="lr">玻璃核心替換「核心」</span></div>
+    <div class="layer pcb"><span class="ll">PCB 主板</span></div>
+  </div>
+  <div class="legend">
+    <p><span class="gl" style="background:#33507e"></span><b>矽中介層</b>：玻璃<b>中介層</b>架構替換它 → ABF 載板沒事。</p>
+    <p><span class="gl" style="background:#2f6aa0"></span><b>有機核心</b>：玻璃<b>核心載板</b>把它換成玻璃+TGV，<b>上下 ABF 堆疊膜照用</b> → 載板廠轉型、不是被消滅。</p>
+    <p style="color:#ffb3c0">關鍵：<b style="color:#ffb3c0">技術替代 ≠ 公司被替代</b>。</p>
+  </div>
+</div>
+
+<div class="note">
+<b>所以 ABF 載板廠（欣興/景碩/南電）是「轉型課題」</b>：玻璃核心上下還是 ABF 膜、這片載板還是它做 → 做得到就吃更高 ASP 的下一代載板（<b>欣興＝Intel 玻璃核心研發夥伴</b>），做不到才被 SKC/Intel 自製/台積 CoPoS 蠶食。<b>短期（2026）它們是 ABF 缺料的受惠方</b>（6/17 景碩漲的就是這個，不是玻璃題材）。不是純威脅、也不是純利多。
+</div>
+
+<h2 class="sec">② 國際 roadmap／量產時程<span class="s2">這是 2027–2029 的故事，不是今年</span></h2>
+<div class="roadgrid"><div class="road"><div class="rtag">2028–29</div><div class="rbody"><div class="rname">台積電 CoPoS</div><div class="rdesc">嘉義AP7/龍潭試產線 2026/6 建置；魏哲家「還要 2–3 年爬坡」→ <b>量產 2028H2–2029</b>，首客傳 NVIDIA Feynman，供應鏈下封口令</div></div></div><div class="road"><div class="rtag">量產 2027</div><div class="rbody"><div class="rname">Intel（最積極）</div><div class="rdesc">CES 2026 發表 Clearwater Forest（業界首款玻璃核心 HVM CPU）</div></div></div><div class="road"><div class="rtag">SKC 2027</div><div class="rbody"><div class="rname">Samsung 電機 / SKC Absolics</div><div class="rdesc">Samsung 與住友合作 TGV；SKC 喬治亞廠瞄準商業化</div></div></div><div class="road"><div class="rtag">外商壟斷</div><div class="rbody"><div class="rname">玻璃基材（卡脖子）</div><div class="rdesc">康寧 / SCHOTT / AGC / NEG 壟斷低 CTE 玻璃配方 — <b>台廠進不去最上游</b></div></div></div></div>
+<div class="note">核心訊息：<b>2026 是「送樣/驗證/小量產」年，真放量 2027–2029</b>；多數概念股股價已先反映 2–3 年後想像。</div>
+
+<h2 class="sec">③ 價值鏈分環節 ×分級<span class="s2">點代碼回主站看該檔分析</span></h2>
+<div class="tierleg"><span>🟢 核心真受惠</span><span>🟡 次核心</span><span>🔴 觀察/蹭題材</span><span style="color:var(--r)">★ 當日漲幅前200</span></div>
+<section class="seg"><div class="seghd"><h3>① TGV 玻璃通孔成孔／雷射設備<span class="segn">4 檔</span></h3><div class="segsub">最硬核、最先吃到訂單</div></div><div class="stkgrid"><a class="stk" style="border-left-color:#27c08a" href="index.html#8027" title="TGV 雷射鑽孔+解膠+電漿清洗一站式；Intel 指定雷射改質設備商、能見度 2027"><span class="top"><span class="tdot">🟢</span><span class="code">8027</span><span class="nm">鈦昇</span></span><span class="drv">TGV 雷射鑽孔+解膠+電漿清洗一站式；Intel 指定雷射改質設備商、能見度 2027</span></a><a class="stk" style="border-left-color:#27c08a" href="index.html#6207" title="TGV 雷射打孔機（單機 4–5 千萬）；已送 ABF 板廠、進 AMD/NVIDIA 認證"><span class="top"><span class="tdot">🟢</span><span class="code">6207</span><span class="nm">雷科</span><span class="star" title="2026-06-17 漲幅前200">★</span></span><span class="drv">TGV 雷射打孔機（單機 4–5 千萬）；已送 ABF 板廠、進 AMD/NVIDIA 認證</span></a><a class="stk" style="border-left-color:#27c08a" href="index.html#8064" title="TGV 雷射改質（每秒 1 萬孔）+ FOPLP RDL 修補；志聖入股整線"><span class="top"><span class="tdot">🟢</span><span class="code">8064</span><span class="nm">東捷</span><span class="star" title="2026-06-17 漲幅前200">★</span></span><span class="drv">TGV 雷射改質（每秒 1 萬孔）+ FOPLP RDL 修補；志聖入股整線</span></a><a class="stk" style="border-left-color:#27c08a" href="index.html#1595" title="PCB 曝光機龍頭；已自建 TGV 示範代工線（500 片/月）、掌握約 7 成設備"><span class="top"><span class="tdot">🟢</span><span class="code">1595</span><span class="nm">川寶</span></span><span class="drv">PCB 曝光機龍頭；已自建 TGV 示範代工線（500 片/月）、掌握約 7 成設備</span></a></div></section><section class="seg"><div class="seghd"><h3>② 玻璃加工／薄化／熱成型 TGV<span class="segn">5 檔</span></h3><div class="segsub">把玻璃做薄做平、或用另一條路成孔</div></div><div class="stkgrid"><a class="stk" style="border-left-color:#27c08a" href="index.html#3149" title="自有熱成型 TGV 專利（避雷射碎裂）；康寧因去中化主動合作、建 HDD 玻璃線（＋軍工無人機）"><span class="top"><span class="tdot">🟢</span><span class="code">3149</span><span class="nm">正達</span><span class="star" title="2026-06-17 漲幅前200">★</span></span><span class="drv">自有熱成型 TGV 專利（避雷射碎裂）；康寧因去中化主動合作、建 HDD 玻璃線（＋軍工無人機）</span></a><a class="stk" style="border-left-color:#27c08a" href="index.html#3673" title="自建 TGV 玻璃載板試產線；2026Q3 試產→下半年送樣→2027 量產"><span class="top"><span class="tdot">🟢</span><span class="code">3673</span><span class="nm">TPK-KY</span><span class="star" title="2026-06-17 漲幅前200">★</span></span><span class="drv">自建 TGV 玻璃載板試產線；2026Q3 試產→下半年送樣→2027 量產</span></a><a class="stk" style="border-left-color:#f5b301" href="index.html#6405" title="玻璃薄化/蝕刻/鍍膜代工；自家把 TGV 需求推遲到 2027–28"><span class="top"><span class="tdot">🟡</span><span class="code">6405</span><span class="nm">悅城</span><span class="star" title="2026-06-17 漲幅前200">★</span></span><span class="drv">玻璃薄化/蝕刻/鍍膜代工；自家把 TGV 需求推遲到 2027–28</span></a><a class="stk" style="border-left-color:#f5b301" href="index.html#3615" title="導電玻璃；TGV 孔內金屬化鍍膜「潛力」、現有獲利仍來自舊業"><span class="top"><span class="tdot">🟡</span><span class="code">3615</span><span class="nm">安可</span><span class="star" title="2026-06-17 漲幅前200">★</span></span><span class="drv">導電玻璃；TGV 孔內金屬化鍍膜「潛力」、現有獲利仍來自舊業</span></a><a class="stk" style="border-left-color:#8b95a3" href="index.html#2438" title="CF 玻璃薄化能力為真，但無切入先進封裝訂單、且虧損 → 技術想像"><span class="top"><span class="tdot">🔴</span><span class="code">2438</span><span class="nm">翔耀</span></span><span class="drv">CF 玻璃薄化能力為真，但無切入先進封裝訂單、且虧損 → 技術想像</span></a></div></section><section class="seg"><div class="seghd"><h3>③ 面板級扇出封裝 FOPLP<span class="segn">7 檔</span></h3><div class="segsub">玻璃基板的「製造本尊」（面板廠＋封測）</div></div><div class="stkgrid"><a class="stk" style="border-left-color:#27c08a" href="index.html#3481" title="FOPLP 已量產（700×700mm、滿載）、2025 拿 SpaceX 訂單、傳台積電龍潭合作 — 族群點火源"><span class="top"><span class="tdot">🟢</span><span class="code">3481</span><span class="nm">群創</span><span class="star" title="2026-06-17 漲幅前200">★</span></span><span class="drv">FOPLP 已量產（700×700mm、滿載）、2025 拿 SpaceX 訂單、傳台積電龍潭合作 — 族群點火源</span></a><a class="stk" style="border-left-color:#27c08a" href="index.html#6789" title="台積電子公司；承擔台積電 CoPoS 首條實驗線（確定性最高）"><span class="top"><span class="tdot">🟢</span><span class="code">6789</span><span class="nm">采鈺</span></span><span class="drv">台積電子公司；承擔台積電 CoPoS 首條實驗線（確定性最高）</span></a><a class="stk" style="border-left-color:#27c08a" href="index.html#6239" title="FOPLP/2.5D 面板級封測，良率 94–95%、AMD/博通驗證、資本支出 500 億"><span class="top"><span class="tdot">🟢</span><span class="code">6239</span><span class="nm">力成</span></span><span class="drv">FOPLP/2.5D 面板級封測，良率 94–95%、AMD/博通驗證、資本支出 500 億</span></a><a class="stk" style="border-left-color:#f5b301" href="index.html#3580" title="FOPLP 巨型 RDL 金屬化的濺鍍/蝕刻設備（群創端）"><span class="top"><span class="tdot">🟡</span><span class="code">3580</span><span class="nm">友威科</span></span><span class="drv">FOPLP 巨型 RDL 金屬化的濺鍍/蝕刻設備（群創端）</span></a><a class="stk" style="border-left-color:#f5b301" href="index.html#3663" title="FOPLP 特殊合金/金屬載板（傳 SpaceX 獨家）— 是金屬載板、非玻璃本體"><span class="top"><span class="tdot">🟡</span><span class="code">3663</span><span class="nm">鑫科</span><span class="star" title="2026-06-17 漲幅前200">★</span></span><span class="drv">FOPLP 特殊合金/金屬載板（傳 SpaceX 獨家）— 是金屬載板、非玻璃本體</span></a><a class="stk" style="border-left-color:#f5b301" href="index.html#6147" title="玻璃覆晶 COG 技術鄰接 CoPoS，但精度差一級、玻璃量產對象未明"><span class="top"><span class="tdot">🟡</span><span class="code">6147</span><span class="nm">頎邦</span></span><span class="drv">玻璃覆晶 COG 技術鄰接 CoPoS，但精度差一級、玻璃量產對象未明</span></a><a class="stk" style="border-left-color:#8b95a3" href="index.html#2409" title="FOPLP 明言非主力（戰略轉車用）；玻璃實質受惠最弱、面板雙虎連動"><span class="top"><span class="tdot">🔴</span><span class="code">2409</span><span class="nm">友達</span><span class="star" title="2026-06-17 漲幅前200">★</span></span><span class="drv">FOPLP 明言非主力（戰略轉車用）；玻璃實質受惠最弱、面板雙虎連動</span></a></div></section><section class="seg"><div class="seghd"><h3>④ 良率關鍵設備<span class="segn">12 檔</span></h3><div class="segsub">翹曲抑制／除泡／檢測／壓合塗佈</div></div><div class="stkgrid"><a class="stk" style="border-left-color:#27c08a" href="index.html#7734" title="先進封裝除泡龍頭（市佔 8–9 成）+ WSS 翹曲抑制；FOPLP 設備 2026H2 小量出貨"><span class="top"><span class="tdot">🟢</span><span class="code">7734</span><span class="nm">印能科技</span><span class="star" title="2026-06-17 漲幅前200">★</span></span><span class="drv">先進封裝除泡龍頭（市佔 8–9 成）+ WSS 翹曲抑制；FOPLP 設備 2026H2 小量出貨</span></a><a class="stk" style="border-left-color:#27c08a" href="index.html#7853" title="CoPoS 檢測機台過日月光驗證、2025 底出貨、領先同業 8–10 個月"><span class="top"><span class="tdot">🟢</span><span class="code">7853</span><span class="nm">政美應用</span></span><span class="drv">CoPoS 檢測機台過日月光驗證、2025 底出貨、領先同業 8–10 個月</span></a><a class="stk" style="border-left-color:#27c08a" href="index.html#6664" title="塗佈/烘烤/壓合設備寡占（玻璃基板/CoPoS 製程）"><span class="top"><span class="tdot">🟢</span><span class="code">6664</span><span class="nm">群翊</span></span><span class="drv">塗佈/烘烤/壓合設備寡占（玻璃基板/CoPoS 製程）</span></a><a class="stk" style="border-left-color:#27c08a" href="index.html#3455" title="全節點 AOI（CoWoS/FOPLP/TGV/CoPoS）、已接一線 OSAT 單"><span class="top"><span class="tdot">🟢</span><span class="code">3455</span><span class="nm">由田</span></span><span class="drv">全節點 AOI（CoWoS/FOPLP/TGV/CoPoS）、已接一線 OSAT 單</span></a><a class="stk" style="border-left-color:#f5b301" href="index.html#3583" title="與山太士結盟翹曲抑制設備（涵蓋 3.5 代線）+ 濕製程"><span class="top"><span class="tdot">🟡</span><span class="code">3583</span><span class="nm">辛耘</span></span><span class="drv">與山太士結盟翹曲抑制設備（涵蓋 3.5 代線）+ 濕製程</span></a><a class="stk" style="border-left-color:#f5b301" href="index.html#3595" title="抗翹曲 Balance film（興櫃、波動大）"><span class="top"><span class="tdot">🟡</span><span class="code">3595</span><span class="nm">山太士</span></span><span class="drv">抗翹曲 Balance film（興櫃、波動大）</span></a><a class="stk" style="border-left-color:#f5b301" href="index.html#3131" title="濕製程設備；成長主軸是 CoWoS、玻璃為延伸"><span class="top"><span class="tdot">🟡</span><span class="code">3131</span><span class="nm">弘塑</span></span><span class="drv">濕製程設備；成長主軸是 CoWoS、玻璃為延伸</span></a><a class="stk" style="border-left-color:#f5b301" href="index.html#3030" title="TGV 孔洞 3D AOI（題材中本益比較低）"><span class="top"><span class="tdot">🟡</span><span class="code">3030</span><span class="nm">德律</span></span><span class="drv">TGV 孔洞 3D AOI（題材中本益比較低）</span></a><a class="stk" style="border-left-color:#f5b301" href="index.html#3055" title="TGV 非破壞雷射電性檢測（小型）"><span class="top"><span class="tdot">🟡</span><span class="code">3055</span><span class="nm">蔚華科</span></span><span class="drv">TGV 非破壞雷射電性檢測（小型）</span></a><a class="stk" style="border-left-color:#f5b301" href="index.html#3485" title="濕製程蝕刻設備（剛上櫃）；主受惠仍 ABF/CoWoS"><span class="top"><span class="tdot">🟡</span><span class="code">3485</span><span class="nm">敘豐</span></span><span class="drv">濕製程蝕刻設備（剛上櫃）；主受惠仍 ABF/CoWoS</span></a><a class="stk" style="border-left-color:#f5b301" href="index.html#6983" title="TGV+FOPLP 檢測設備（剛上櫃）"><span class="top"><span class="tdot">🟡</span><span class="code">6983</span><span class="nm">華洋精機</span></span><span class="drv">TGV+FOPLP 檢測設備（剛上櫃）</span></a><a class="stk" style="border-left-color:#f5b301" href="index.html#7795" title="真空壓膜設備龍頭（市佔 95%）；玻璃設備 2027 才貢獻"><span class="top"><span class="tdot">🟡</span><span class="code">7795</span><span class="nm">長廣</span></span><span class="drv">真空壓膜設備龍頭（市佔 95%）；玻璃設備 2027 才貢獻</span></a></div></section><section class="seg"><div class="seghd"><h3>⑤ 載具清洗／整線自動化／材料介面層<span class="segn">5 檔</span></h3><div class="segsub">周邊但真有布局</div></div><div class="stkgrid"><a class="stk" style="border-left-color:#f5b301" href="index.html#4542" title="家登生態圈、CoPoS 載具清洗；本期成長放緩+現增稀釋"><span class="top"><span class="tdot">🟡</span><span class="code">4542</span><span class="nm">科嶠</span><span class="star" title="2026-06-17 漲幅前200">★</span></span><span class="drv">家登生態圈、CoPoS 載具清洗；本期成長放緩+現增稀釋</span></a><a class="stk" style="border-left-color:#f5b301" href="index.html#3498" title="與東台/東捷組 FOPLP 聯盟整線自動化；台積試產線屬傳聞"><span class="top"><span class="tdot">🟡</span><span class="code">3498</span><span class="nm">陽程</span></span><span class="drv">與東台/東捷組 FOPLP 聯盟整線自動化；台積試產線屬傳聞</span></a><a class="stk" style="border-left-color:#f5b301" href="index.html#3585" title="欣興系，TGV 玻璃與銅箔間的緩衝膠片/微銅柱（毛利 70–80%）"><span class="top"><span class="tdot">🟡</span><span class="code">3585</span><span class="nm">聯致</span></span><span class="drv">欣興系，TGV 玻璃與銅箔間的緩衝膠片/微銅柱（毛利 70–80%）</span></a><a class="stk" style="border-left-color:#f5b301" href="index.html#7828" title="本業探針卡/銅柱；TGV-ICP 玻璃基板是 2027 底才規劃的未來引擎"><span class="top"><span class="tdot">🟡</span><span class="code">7828</span><span class="nm">創新服務</span></span><span class="drv">本業探針卡/銅柱；TGV-ICP 玻璃基板是 2027 底才規劃的未來引擎</span></a><a class="stk" style="border-left-color:#8b95a3" href="index.html#1809" title="玻璃陶瓷中介層材料；山村硝子+工研院 MOU，但距半導體級遠、Q1 EPS 僅 0.05 → 題材偏材料"><span class="top"><span class="tdot">🔴</span><span class="code">1809</span><span class="nm">中釉</span><span class="star" title="2026-06-17 漲幅前200">★</span></span><span class="drv">玻璃陶瓷中介層材料；山村硝子+工研院 MOU，但距半導體級遠、Q1 EPS 僅 0.05 → 題材偏材料</span></a></div></section><section class="seg"><div class="seghd"><h3>⑥ ABF 載板廠（轉型課題，非純威脅／非純利多）<span class="segn">3 檔</span></h3><div class="segsub">玻璃替代的是「有機核心+PTH」技術，不是 ABF 膜、不是把公司幹掉</div></div><div class="stkgrid"><a class="stk" style="border-left-color:#f5b301" href="index.html#3037" title="真玻璃核心參與者（Intel EMIB/玻璃核心研發夥伴）+ 短期吃 ABF 缺料 — 不是被替代方"><span class="top"><span class="tdot">🟡</span><span class="code">3037</span><span class="nm">欣興</span></span><span class="drv">真玻璃核心參與者（Intel EMIB/玻璃核心研發夥伴）+ 短期吃 ABF 缺料 — 不是被替代方</span></a><a class="stk" style="border-left-color:#8b95a3" href="index.html#3189" title="6/17 漲的是 ABF 缺料漲價（非玻璃題材）；長期玻璃是轉型課題、機會與風險並存"><span class="top"><span class="tdot">🔴</span><span class="code">3189</span><span class="nm">景碩</span><span class="star" title="2026-06-17 漲幅前200">★</span></span><span class="drv">6/17 漲的是 ABF 缺料漲價（非玻璃題材）；長期玻璃是轉型課題、機會與風險並存</span></a><a class="stk" style="border-left-color:#8b95a3" href="index.html#8046" title="ABF 缺料受惠+轉型課題；勿當純受害者、也勿當玻璃題材追"><span class="top"><span class="tdot">🔴</span><span class="code">8046</span><span class="nm">南電</span></span><span class="drv">ABF 缺料受惠+轉型課題；勿當純受害者、也勿當玻璃題材追</span></a></div></section><section class="seg"><div class="seghd"><h3>⑦ 純題材／名稱沾邊<span class="segn">7 檔</span></h3><div class="segsub">本業與玻璃核心無直接關聯</div></div><div class="stkgrid"><a class="stk" style="border-left-color:#8b95a3" href="index.html#2221" title="本業不鏽鋼鋼管；僅前驅物氣化系統沾鍍膜邊 → 純題材漲停、追高風險最大"><span class="top"><span class="tdot">🔴</span><span class="code">2221</span><span class="nm">大甲</span><span class="star" title="2026-06-17 漲幅前200">★</span></span><span class="drv">本業不鏽鋼鋼管；僅前驅物氣化系統沾鍍膜邊 → 純題材漲停、追高風險最大</span></a><a class="stk" style="border-left-color:#8b95a3" href="index.html#1802" title="傳統玻璃，多方明言「題材 &gt; 實質」"><span class="top"><span class="tdot">🔴</span><span class="code">1802</span><span class="nm">台玻</span></span><span class="drv">傳統玻璃，多方明言「題材 &gt; 實質」</span></a><a class="stk" style="border-left-color:#8b95a3" href="index.html#1815" title="玻纖布 ≠ 玻璃核心（玻纖布是有機載板補強材）"><span class="top"><span class="tdot">🔴</span><span class="code">1815</span><span class="nm">富喬</span></span><span class="drv">玻纖布 ≠ 玻璃核心（玻纖布是有機載板補強材）</span></a><a class="stk" style="border-left-color:#8b95a3" href="index.html#6585" title="TPU 防爆「玻璃膜」是建築安全膜，與半導體零交集"><span class="top"><span class="tdot">🔴</span><span class="code">6585</span><span class="nm">鼎基</span></span><span class="drv">TPU 防爆「玻璃膜」是建築安全膜，與半導體零交集</span></a><a class="stk" style="border-left-color:#8b95a3" href="index.html#3711" title="OSAT；玻璃基板後段量產 2028+、占本業比重極小"><span class="top"><span class="tdot">🔴</span><span class="code">3711</span><span class="nm">日月光</span></span><span class="drv">OSAT；玻璃基板後段量產 2028+、占本業比重極小</span></a><a class="stk" style="border-left-color:#8b95a3" href="index.html#2449" title="測試代工；無玻璃基板專屬訂單"><span class="top"><span class="tdot">🔴</span><span class="code">2449</span><span class="nm">京元電</span></span><span class="drv">測試代工；無玻璃基板專屬訂單</span></a><a class="stk" style="border-left-color:#8b95a3" href="index.html#4958" title="PCB 龍頭被連帶卡位想像；本業是軟硬板"><span class="top"><span class="tdot">🔴</span><span class="code">4958</span><span class="nm">臻鼎</span></span><span class="drv">PCB 龍頭被連帶卡位想像；本業是軟硬板</span></a></div></section>
+
+<h2 class="sec">④ 今日（2026-06-17）族群熱度<span class="s2">玻璃基板/FOPLP 是面板族群暴衝的底層題材</span></h2>
+<div class="hot">
+  <a class="hotchip" href="index.html#3481"><b>群創 3481</b> 漲停</a>
+  <a class="hotchip" href="index.html#8064"><b>東捷 8064</b> 漲停</a>
+  <a class="hotchip" href="index.html#3663"><b>鑫科 3663</b> 漲停</a>
+  <a class="hotchip" href="index.html#6405"><b>悅城 6405</b></a>
+  <a class="hotchip" href="index.html#3673"><b>TPK-KY 3673</b></a>
+  <a class="hotchip" href="index.html#6207"><b>雷科 6207</b></a>
+  <a class="hotchip" href="index.html#2409"><b>友達 2409</b></a>
+  <a class="hotchip" href="index.html#3189"><b>景碩 3189</b> ABF非玻璃</a>
+  <a class="hotchip" href="index.html#4542"><b>科嶠 4542</b></a>
+  <a class="hotchip" href="index.html#3149"><b>正達 3149</b></a>
+  <a class="hotchip" href="index.html#2221"><b>大甲 2221</b> 純題材</a>
+  <a class="hotchip" href="index.html#3615"><b>安可 3615</b></a>
+  <a class="hotchip" href="index.html#1809"><b>中釉 1809</b></a>
+  <a class="hotchip" href="index.html#7734"><b>印能 7734</b></a>
+</div>
+
+<h2 class="sec">⑤ 怎麼分真假 ＋ 追高警語</h2>
+<div class="req"><b style="color:var(--g)">真受惠三要件</b>＝① 具體送樣對象　② 訂單能見度　③ 已驗證通過。三項齊備最硬核：<br><b>鈦昇 8027</b> · <b>雷科 6207</b> · <b>正達 3149</b> · <b>群創 3481</b> · <b>TPK-KY 3673</b> · <b>印能 7734</b> · <b>政美 7853</b> · <b>采鈺 6789</b></div>
+<div class="risk"><ul><li><b>時間差最大</b>：真放量 2027–2029，2026 僅送樣/驗證，股價已先反映 2–3 年後想像。</li><li><b>台積電封口令</b>：市場點名的「13 檔」多屬推測，靠新聞追易買到蹭題材股。</li><li><b>最上游玻璃材料台廠進不去</b>（康寧/肖特/AGC/NEG 壟斷），天花板受限。</li><li><b>ABF 載板廠是「轉型」不是「被替代」</b>：別把景碩/南電當純受害者，也別把它們今天的 ABF 缺料漲當玻璃題材。</li><li><b>興櫃/小型設備股</b>（山太士、蔚華科）流動性差、漲停後回檔劇烈。</li></ul></div>
+
+<footer>
+資料來源：business_fingerprint 指紋庫 ∩ 漲幅榜 + WebSearch 驗證（5 環節並行研究）｜題材標籤與催化劑可能隨時間變化，本頁為 2026-06-17 快照、僅供研究、非投資建議。<br>
+🤖 大大毛多台股 · 玻璃基板族群深入頁
+</footer>
+</div>
+</body>
+</html>
