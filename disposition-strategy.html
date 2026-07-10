@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<style data-omelette-injected>html,body{background:transparent}</style><script data-omelette-injected>(()=>{{const W=new URLSearchParams(location.search).get("theme");if(W==="light"||W==="dark"){document.documentElement.dataset.theme=W}}{const W=()=>{try{if(document.querySelector('meta[name="color-scheme"]'))return;const V=getComputedStyle(document.documentElement).getPropertyValue("color-scheme").trim();if(V&&V!=="normal")return;const z=(j)=>{if(!j)return null;const H=getComputedStyle(j).backgroundColor.match(/^rgba?\(\s*(\d+)[,\s]+(\d+)[,\s]+(\d+)(?:[,\s/]+([\d.]+%?))?\s*\)$/);if(!H)return null;const F=H[4]==null?1:parseFloat(H[4])/(H[4].endsWith("%")?100:1);if(F<0.99)return null;return[+H[1],+H[2],+H[3]]};const G=z(document.body)||z(document.documentElement);if(!G)return;const K=(j)=>{const H=j/255;return H<=0.04045?H/12.92:((H+0.055)/1.055)**2.4};const D=0.2126*K(G[0])+0.7152*K(G[1])+0.0722*K(G[2]);document.documentElement.style.setProperty("color-scheme",D<0.4?"dark":"light")}catch{}};if(document.readyState==="complete")W();else window.addEventListener("load",W)}var b=["https://claude.ai","https://preview.claude.ai","https://42297025-9964-4553-9419-b9b41b425803.claudeusercontent.com"];var p=true;var O=30000;var n=3000;document.addEventListener("DOMContentLoaded",()=>{const W=window.Babel;const V="om-src-id";if(W&&W.registerPlugin&&!(W.availablePlugins&&W.availablePlugins[V])){W.registerPlugin(V,({types:D})=>({visitor:{JSXOpeningElement(j,H){const F=j.node;if(F.name&&F.name.type==="JSXMemberExpression")return;for(let Q=0;Q<F.attributes.length;Q++){const $=F.attributes[Q];if($.type==="JSXAttribute"&&$.name&&$.name.name==="data-om-id")return}const P=H.file&&H.file.opts&&H.file.opts.filename||"?";const R=F.loc&&F.loc.start;const J=`jsx:${P}:${F.start??0}:${R?R.line:0}:${R?R.column+1:0}`;F.attributes.push(D.jsxAttribute(D.jsxIdentifier("data-om-id"),D.stringLiteral(J)))}}}))}const z="om-text-extract";let G=false;if(p&&W&&W.registerPlugin&&!(W.availablePlugins&&W.availablePlugins[z])){const D=window.React;if(D&&D.useSyncExternalStore&&D.createElement){G=true;const j={};const H=new Set;let F=0;window.__omTextO=j;window.__omTextSet=(J)=>{for(const Q in J){const $=J[Q];if($==null)delete j[Q];else j[Q]=$}F++;H.forEach((Q)=>Q())};const P=(J)=>{H.add(J);return()=>H.delete(J)};const R=()=>F;window.__OmT=function J(Q){D.useSyncExternalStore(P,R,R);return D.createElement("span",{"data-om-text":Q.i,className:"__om-t"},Q.i in j?j[Q.i]:Q.children)};W.registerPlugin(z,({types:J})=>{const Q={style:1,script:1,noscript:1,textarea:1,title:1,option:1,text:1,tspan:1,textPath:1};const $={placeholder:1,alt:1,title:1,label:1,"aria-label":1,"aria-description":1,"aria-placeholder":1};const Y=(q,M)=>J.logicalExpression("??",J.memberExpression(J.logicalExpression("||",J.memberExpression(J.identifier("window"),J.identifier("__omTextO")),J.objectExpression([])),J.stringLiteral(q),true),M);const Z=(q)=>q.file&&q.file.opts&&q.file.opts.filename||"?";const B=(q)=>q.file&&q.file.code||"";const U=(q,M)=>{const L=(X)=>X&&X.start!=null&&X.end!=null&&(X.type==="StringLiteral"||X.type==="TemplateLiteral"&&X.expressions.length===0)?[X.start,X.end]:null;const N=L(M);if(N)return N;if(M&&M.type==="Identifier"){const X=q.scope.getBinding(M.name);if(X&&X.constant&&X.path.node.type==="VariableDeclarator"){return L(X.path.node.init)}}return null};const x=(q,M,L)=>{const N=q.node;let X=false;const f=(w,A)=>{X=true;return J.jsxElement(J.jsxOpeningElement(J.jsxIdentifier("__OmT"),[J.jsxAttribute(J.jsxIdentifier("i"),J.stringLiteral(w))],false),J.jsxClosingElement(J.jsxIdentifier("__OmT")),[A],false)};const C=N.children.map((w)=>{if(w.type==="JSXText"){if(w.start==null||w.end==null)return w;const A=L.slice(w.start,w.end);const k=A.length-A.trimStart().length;const u=A.length-A.trimEnd().length;if(k+u>=A.length)return w;return f(`txt:${M}:${w.start+k}:${w.end-u}`,w)}if(w.type==="JSXExpressionContainer"){const A=U(q,w.expression);if(A)return f(`str:${M}:${A[0]}:${A[1]}`,w)}return w});if(X)N.children=C};return{visitor:{JSXOpeningElement(q,M){const L=q.node;const N=Z(M);const X={};for(let f=0;f<L.attributes.length;f++){const C=L.attributes[f];if(C.type!=="JSXAttribute"||!C.name)continue;const w=C.name.name;if(!$[w])continue;if(!C.value||C.value.type!=="StringLiteral")continue;if(C.value.start==null||C.value.end==null)continue;const A=`txt:${N}:${C.value.start}:${C.value.end}`;X[w]=A;C.value=J.jsxExpressionContainer(Y(A,J.stringLiteral(C.value.value)))}if(Object.keys(X).length){L.attributes.push(J.jsxAttribute(J.jsxIdentifier("data-om-text-attrs"),J.stringLiteral(JSON.stringify(X))))}},JSXElement(q,M){const L=q.node.openingElement;const N=L&&L.name&&L.name.name;if(N==="__OmT")return;if(typeof N==="string"&&Q[N])return;x(q,Z(M),B(M))},JSXFragment(q,M){x(q,Z(M),B(M))}}}})}}const K=G?["transform-react-jsx-source",V,z]:["transform-react-jsx-source",V];document.querySelectorAll('script[type="text/babel"],script[type="text/jsx"]').forEach((D,j)=>{const H=D.getAttribute("data-plugins")||"";const F=K.filter((P)=>H.indexOf(P)<0);if(F.length){D.setAttribute("data-plugins",H?`${H},${F.join(",")}`:F.join(","))}if(!D.hasAttribute("data-filename")){D.setAttribute("data-filename",D.getAttribute("src")||`inline-${j}`)}})});var v=window.parent;var g="not editable here — open the project in the Claude Design editor to save";var d=()=>Promise.resolve({persisted:false,noHost:true,reason:g});var S=d;var h="data/storage.json";var i=()=>{try{const W=new URL(document.baseURI);const V=W.pathname.match(/\/projects\/([^/]+)\/serve\//);if(V)return V[1];return W.hostname.split(".")[0]||""}catch{return location.hostname.split(".")[0]||""}};var o=()=>{try{const W=new URL(document.baseURI);const V=W.pathname.indexOf("/serve/");if(V>=0)return W.origin+W.pathname.slice(0,V+"/serve/".length)+h}catch{}return"./"+h};var I=null;var _=()=>{if(!I){I=fetch(o(),{cache:"no-store"}).then((W)=>{if(W.ok)return W.text();return W.status===404?"":null}).catch(()=>null).then((W)=>{if(W===null){I=null;return null}const V=new Map;if(!W)return V;let z;try{z=JSON.parse(W)}catch{console.warn("[omelette.storage] "+h+" is not valid JSON; treating the store as unreadable so a save cannot overwrite the "+"hand-edited bytes. Fix the JSON (or delete the file) to re-enable persistence.");I=null;return null}if(z===null||typeof z!=="object"||Array.isArray(z)){console.warn("[omelette.storage] "+h+" doesn't hold a JSON object; treating the store as unreadable so a save cannot "+"overwrite the hand-edited bytes. Make the top level a JSON object to re-enable persistence.");I=null;return null}const G=z;if("data"in G){const K=G.data;if(K===null||typeof K!=="object"||Array.isArray(K)){console.warn("[omelette.storage] "+h+' has a "data" field that is not a JSON object; treating the store as unreadable so a '+'save cannot overwrite the hand-edited bytes. Make "data" a JSON object to re-enable persistence.');I=null;return null}const D=G._meta;const j=D!==null&&typeof D==="object"?D.project:undefined;if(typeof j==="string"&&j!==""&&j!==i())return V;for(const H of Object.keys(K))V.set(H,K[H]);return V}for(const K of Object.keys(G)){if(K!=="_meta")V.set(K,G[K])}return V})}return I};var y=(W)=>S(h,JSON.stringify({_meta:{project:i(),version:1},data:Object.fromEntries(W)},null,2));var m=Promise.resolve();var T=(W)=>{const V=m.then(W);m=V.then(()=>{return},()=>{return});return V};var s=/sk-(?:ant-)?[A-Za-z0-9_-]{16,}|AKIA[0-9A-Z]{16}|gh[pousr]_[A-Za-z0-9]{20,}|xox[a-z]-[A-Za-z0-9][A-Za-z0-9-]{9,}|AIza[0-9A-Za-z_-]{30,}|-----BEGIN [A-Z ]*PRIVATE KEY-----/;var a=/password|passwd|secret|api[_-]?key|access[_-]?token|auth[_-]?token|credential/i;var r=(W,V,z)=>{if(s.test(V)||a.test(W)&&typeof z==="string"&&z.length>=8){console.warn('[omelette.storage] the value for "'+W+'" looks like a credential. The storage file is a plaintext project file — visible to '+"everyone with project access and copied when the project is duplicated. Do not store secrets here.")}};var l={persisted:false,reason:"could not load the existing store — not overwriting it"};var c={persisted:false,reason:"stored value changed since a failed read — re-read this key before saving"};var E=new Set;var t={get:(W)=>{if(typeof W!=="string"){return Promise.reject(new TypeError("storage.get: key must be a string"))}return T(_).then((V)=>{if(V===null){E.add(W);return null}E.delete(W);if(!V.has(W))return null;const z=V.get(W);return z==null?null:JSON.parse(JSON.stringify(z))})},set:(W,V)=>{if(typeof W!=="string"){return Promise.reject(new TypeError("storage.set: key must be a string"))}let z;try{z=JSON.stringify(V)}catch(K){return Promise.reject(new TypeError("storage.set: value must be JSON-serializable ("+String(K)+")"))}if(z===undefined){return Promise.reject(new TypeError("storage.set: value must be JSON-serializable"))}r(W,z,V);const G=JSON.parse(z);return T(()=>_().then((K)=>{if(K===null)return l;if(E.has(W)){if(K.has(W))return c;E.delete(W)}K.set(W,G);return y(K)}))},delete:(W)=>{if(typeof W!=="string"){return Promise.reject(new TypeError("storage.delete: key must be a string"))}return T(()=>_().then((V)=>{if(V===null)return l;if(E.has(W)){if(V.has(W))return c;E.delete(W)}V.delete(W);return y(V)}))},keys:()=>T(_).then((W)=>W===null?[]:Array.from(W.keys()))};window.omelette={writeFile:(W,V)=>S(W,V).then((z)=>{if(!z.persisted&&!z.noHost){throw new Error(z.reason||"write failed")}}),storage:t};if(v&&v!==window){const W=(J,Q)=>{try{v.postMessage({__omelette_log:true,type:J,data:Q},"*")}catch{}};["log","warn","error"].forEach((J)=>{const Q=console[J];console[J]=(...$)=>{const Y=$.map((Z)=>{try{return typeof Z==="object"?JSON.stringify(Z):String(Z)}catch{try{return String(Z)}catch{return"[unstringifiable]"}}}).join(" ");W(J,Y);Q.apply(console,$)}});window.addEventListener("error",(J)=>{const Q=J.target;if(Q&&Q!==window&&Q.tagName){const $=Q.src||Q.href||"";W("resource_error",`${Q.tagName} failed to load: ${$}`)}else{W("error",`${J.message||"Unknown error"} at ${J.filename||"?"}:${J.lineno||0}:${J.colno||0}`)}},true);window.addEventListener("unhandledrejection",(J)=>{const Q=J.reason;const $=Q instanceof Error?`${Q.message} ${Q.stack}`:String(Q);W("error",`Unhandled rejection: ${$}`)});window.addEventListener("click",(J)=>{if(J.defaultPrevented||J.button!==0)return;if(J.metaKey||J.ctrlKey||J.shiftKey||J.altKey)return;const Q=J.composedPath?J.composedPath():[];const $=["button","input","select","textarea","summary","label"];let Y=null;for(const x of Q){if(!(x instanceof Element))continue;if(x.localName==="a"){if(!(x instanceof HTMLAnchorElement))return;Y=x;break}if($.indexOf(x.localName)!==-1)return}if(!Y)return;if(Y.isContentEditable)return;const Z=Y.closest("[contenteditable]");if(Z&&Z.getAttribute("contenteditable")!=="false")return;const B=(Y.getAttribute("target")||"_self").toLowerCase();if(B!=="_self"&&B!=="_top"&&B!=="_parent")return;let U;try{U=new URL(Y.href)}catch{return}if(U.protocol!=="http:"&&U.protocol!=="https:")return;if(location.origin==="null")return;if(U.origin===location.origin)return;J.preventDefault();window.open(U.href,"_blank","noopener,noreferrer")});const V=()=>{try{v.postMessage({type:"omelette:height",height:document.documentElement.scrollHeight},"*")}catch{}};if(window.ResizeObserver)new ResizeObserver(V).observe(document.documentElement);const z=()=>{V();if(!document.querySelector('script[type="text/babel"],script[type="text/jsx"]'))return;const J=()=>document.getElementById("root")||document.querySelector("body > div[id]");const Q=J()?.firstElementChild??null;let $=0;const Y=()=>{const Z=J();if(Z&&Z.firstElementChild!==Q||++$>30){V();return}setTimeout(Y,100)};setTimeout(Y,100)};if(document.readyState==="complete")z();else window.addEventListener("load",z);const G={};let K=0;const D=(J)=>new Promise((Q,$)=>{if(!b.length){$(new Error("claude.complete: no parent origin"));return}const Y=`c${++K}`;const Z=()=>setTimeout(()=>{delete G[Y];$(new Error(`claude.complete: no data for ${O/1000}s`))},O);const B=Z();G[Y]={resolve:Q,reject:$,text:"",t:B,arm:Z};try{for(const U of b){v.postMessage({__om_api:true,id:Y,body:J},U)}}catch(U){clearTimeout(B);delete G[Y];$(U)}});const j=8;const H=async(J,Q)=>{if(!Array.isArray(J.messages)){throw new Error("claude.complete: tools require a messages array")}const $=J.messages.slice();const Y={...J,tools:J.tools.map((U)=>{if(U===null||typeof U!=="object")return U;const x={};for(const q of Object.keys(U)){if(typeof U[q]!=="function")x[q]=U[q]}return x})};const Z=Y.tool_choice;const B=Z!=null&&(Z.type==="any"||Z.type==="tool")?{...Y,tool_choice:Z.disable_parallel_tool_use!==undefined?{type:"auto",disable_parallel_tool_use:Z.disable_parallel_tool_use}:{type:"auto"}}:Y;for(let U=0;U<j;U++){const x=await D({...U===0?Y:B,messages:$});const q=x.message;const M=q&&Array.isArray(q.content)?q.content:null;const L=M?M.filter((X)=>X?.type==="tool_use"):[];if(q?.stop_reason!=="tool_use"||L.length===0){return x.text}const N=[];for(const X of L){const f=Q.get(X.name);if(!f){N.push({type:"tool_result",tool_use_id:X.id,content:`no handler for tool "${X.name}"`,is_error:true});continue}try{const C=await f(X.input);const w=typeof C==="string"?C:R(C)??"";N.push({type:"tool_result",tool_use_id:X.id,content:w})}catch(C){N.push({type:"tool_result",tool_use_id:X.id,content:String(C?.message??C??"tool handler failed"),is_error:true})}}$.push({role:"assistant",content:M},{role:"user",content:N})}throw new Error(`claude.complete: exceeded ${j} tool turns`)};window.claude={complete(J){const Q=J;if(Q!==null&&typeof Q==="object"&&Array.isArray(Q.tools)&&Q.tools.some(($)=>$!==null&&typeof $==="object"&&typeof $.run==="function")){const $=new Map;for(const Y of Q.tools){if(Y!==null&&typeof Y==="object"&&typeof Y.run==="function"){$.set(String(Y.name),Y.run)}}return H(Q,$)}return D(J).then(($)=>$.text)}};const F={};let P=0;S=(J,Q)=>new Promise(($)=>{if(!b.length){$({persisted:false,noHost:true,reason:g});return}const Y=`f${++P}`;const Z=setTimeout(()=>{delete F[Y];$({persisted:false,noHost:true,reason:g})},n);F[Y]={settle:$,t:Z};try{for(const B of b){v.postMessage({__om_file:true,id:Y,op:"write",path:J,content:Q},B)}}catch{clearTimeout(Z);delete F[Y];$({persisted:false,noHost:true,reason:g})}});const R=(J)=>{try{return JSON.stringify(J)}catch{return JSON.stringify(String(J))}};window.addEventListener("message",(J)=>{if(b.indexOf(J.origin)<0)return;if(J.source!==v)return;const Q=J.data;if(!Q)return;if(Q.type==="omelette-preview-refresh"){if(typeof Q.token!=="string"||!/^[0-9a-f.-]+(\.(rc|pr-[0-9]+))?(\.[0-9]+\.[0-9a-f]{16})?$/.test(Q.token))return;const Z=Math.max(1,Math.floor((Q.expiresAt||0)-Date.now()/1000));document.cookie="__Host-omelette-preview="+Q.token+"; Path=/; Secure; SameSite=None; Partitioned; Max-Age="+Z;return}if(Q.__om_file_r){const Z=F[Q.id];if(!Z)return;clearTimeout(Z.t);delete F[Q.id];Z.settle(Q.ok?{persisted:true}:{persisted:false,reason:Q.error||"write failed"});return}if(Q.__om_api_r){const Z=G[Q.id];if(!Z)return;if(Q.error!=null){clearTimeout(Z.t);delete G[Q.id];Z.reject(new Error(Q.error));return}if(Q.chunk!=null){clearTimeout(Z.t);Z.t=Z.arm();Z.text+=Q.chunk;return}if(Q.done){clearTimeout(Z.t);delete G[Q.id];Z.resolve({text:Q.text!=null?Q.text:Z.text,message:Q.message});return}return}if(!Q.__om_eval)return;const $=Q;const Y=(Z)=>{J.source.postMessage({...Z,__om_eval_r:1,id:$.id},J.origin)};try{const Z=(0,eval)($.code);if(Z&&typeof Z.then==="function"){Z.then((B)=>Y({ok:1,v:R(B)}),(B)=>Y({ok:0,e:String(B)}))}else{Y({ok:1,v:R(Z)})}}catch(Z){Y({ok:0,e:String(Z)})}})}})();
+</script>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>處置股「浪子回頭」策略｜2016–2026 量化驗證</title>
+<style>
+:root{
+  --page:#f9f9f7; --surface:#fcfcfb;
+  --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+  --grid:#e1e0d9; --baseline:#c3c2b7; --ring:rgba(11,11,11,0.10);
+  --up:#e34948; --dn:#008300; --accent:#2a78d6;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{background:var(--page);color:var(--ink);font-family:system-ui,-apple-system,"PingFang TC","Heiti TC","Microsoft JhengHei","Segoe UI",sans-serif;line-height:1.65;font-size:16px;}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+.num{font-variant-numeric:tabular-nums;}
+.up{color:var(--up);}
+.dn{color:var(--dn);}
+
+/* ---------- header ---------- */
+header{padding:72px 0 40px 0;border-bottom:1px solid var(--grid);}
+.kicker{font-size:13px;letter-spacing:0.18em;color:var(--muted);text-transform:uppercase;}
+h1{font-size:44px;line-height:1.25;font-weight:700;margin:14px 0 12px 0;text-wrap:pretty;}
+.sub{font-size:18px;color:var(--ink2);max-width:46em;text-wrap:pretty;}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;}
+.chip{font-size:13px;color:var(--ink2);border:1px solid var(--ring);background:var(--surface);padding:4px 12px;border-radius:999px;}
+.chip.warn{color:#8a5600;border-color:#e6c98a;background:#fdf7ea;}
+
+/* ---------- sections ---------- */
+section{padding:52px 0 8px 0;}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px;}
+.sec-no{font-size:13px;color:var(--accent);font-weight:700;letter-spacing:0.08em;}
+h2{font-size:26px;font-weight:700;}
+.lede{color:var(--ink2);max-width:52em;margin-bottom:24px;text-wrap:pretty;}
+
+/* ---------- stat tiles ---------- */
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:32px;}
+.tile{background:var(--surface);border:1px solid var(--ring);border-radius:10px;padding:20px 22px;}
+.tile .v{font-size:34px;font-weight:700;line-height:1.15;}
+.tile .k{font-size:13px;color:var(--muted);margin-top:6px;}
+.tile .s{font-size:12px;color:var(--muted);margin-top:2px;}
+
+/* ---------- cards / panels ---------- */
+.panel{background:var(--surface);border:1px solid var(--ring);border-radius:12px;padding:26px 28px;}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+
+/* ---------- rules ---------- */
+.step{background:var(--surface);border:1px solid var(--ring);border-radius:12px;padding:24px;}
+.step .n{font-size:13px;font-weight:700;color:var(--accent);letter-spacing:0.06em;}
+.step h3{font-size:18px;margin:8px 0 8px 0;}
+.step p{font-size:14.5px;color:var(--ink2);text-wrap:pretty;}
+.laws{margin-top:14px;background:var(--surface);border:1px solid var(--ring);border-radius:12px;overflow:hidden;}
+.law{display:flex;gap:16px;padding:14px 24px;border-top:1px solid var(--grid);align-items:baseline;}
+.law:first-child{border-top:0;}
+.law b{flex:0 0 11em;font-size:15px;}
+.law span{color:var(--ink2);font-size:14.5px;}
+
+/* ---------- tables ---------- */
+table{width:100%;border-collapse:collapse;font-size:14.5px;}
+th{font-size:12.5px;color:var(--muted);font-weight:600;text-align:right;padding:8px 10px;border-bottom:1px solid var(--baseline);white-space:nowrap;}
+th:first-child,td:first-child{text-align:left;}
+td{padding:9px 10px;border-bottom:1px solid var(--grid);text-align:right;white-space:nowrap;}
+tr:last-child td{border-bottom:0;}
+.tbl-note{font-size:12.5px;color:var(--muted);margin-top:10px;}
+.rowlab{color:var(--ink);font-weight:600;}
+.grp td{background:#f4f3ef;font-weight:700;color:var(--ink2);font-size:12.5px;text-align:left;letter-spacing:0.04em;}
+
+/* ---------- charts ---------- */
+.chart-card{background:var(--surface);border:1px solid var(--ring);border-radius:12px;padding:24px 26px;}
+.chart-title{font-size:15px;font-weight:700;}
+.chart-sub{font-size:12.5px;color:var(--muted);margin-top:2px;margin-bottom:16px;}
+.chart-scroll{overflow-x:auto;}
+.chart-scroll svg{min-width:720px;}
+svg{display:block;width:100%;height:auto;}
+.bar-hit{fill:transparent;cursor:default;}
+.bar-hit:hover + rect{opacity:0.82;}
+#tip{position:fixed;pointer-events:none;background:var(--ink);color:#fff;font-size:12.5px;line-height:1.5;padding:8px 12px;border-radius:8px;opacity:0;transform:translate(-50%,calc(-100% - 10px));transition:opacity .12s;z-index:50;white-space:nowrap;}
+#tip .t-k{color:#c3c2b7;}
+details{margin-top:14px;}
+summary{font-size:13px;color:var(--muted);cursor:pointer;}
+details table{margin-top:10px;font-size:13px;}
+
+/* ---------- path viz ---------- */
+.path-row{display:grid;grid-template-columns:12em 1fr 6.5em;gap:14px;align-items:center;padding:10px 0;}
+.path-row + .path-row{border-top:1px solid var(--grid);}
+.path-lab{font-size:14px;color:var(--ink);}
+.path-lab small{display:block;color:var(--muted);font-size:12px;}
+.path-track{position:relative;height:26px;}
+.path-zero{position:absolute;left:50%;top:-4px;bottom:-4px;width:1px;background:var(--baseline);}
+.path-bar{position:absolute;top:4px;height:18px;}
+.path-val{font-size:15px;font-weight:700;text-align:right;}
+.path-ci{font-size:11.5px;color:var(--muted);text-align:right;}
+
+/* ---------- example cards ---------- */
+.case{background:var(--surface);border:1px solid var(--ring);border-radius:12px;padding:22px;}
+.case .name{font-size:17px;font-weight:700;}
+.case .tag{font-size:12px;color:var(--muted);}
+.case .ret{font-size:30px;font-weight:700;margin:10px 0 6px 0;}
+.case dl{font-size:13.5px;color:var(--ink2);display:grid;grid-template-columns:auto 1fr;gap:2px 12px;}
+.case dt{color:var(--muted);}
+.case dd{text-align:right;}
+
+/* ---------- risk ---------- */
+.risk li{margin:10px 0 10px 1.2em;color:var(--ink2);font-size:15px;text-wrap:pretty;}
+.risk b{color:var(--ink);}
+
+footer{margin-top:64px;padding:28px 0 56px 0;border-top:1px solid var(--grid);font-size:13px;color:var(--muted);line-height:1.9;}
+
+@media (max-width:860px){
+  h1{font-size:32px;}
+  .tiles{grid-template-columns:repeat(2,1fr);}
+  .grid3{grid-template-columns:1fr;}
+  .grid2{grid-template-columns:1fr;}
+  .path-row{grid-template-columns:8.5em 1fr 5.5em;}
+  .law b{flex-basis:8em;}
+  .panel{overflow-x:auto;}
+  .tbl-scroll{overflow-x:auto;}
+}
+</style>
+</head>
+<body>
+<div id="tip"></div>
+
+<header>
+  <div class="wrap">
+    <div class="kicker">量化研究・台股處置制度・2016–2026</div>
+    <h1>處置股「浪子回頭」策略</h1>
+    <p class="sub">股票被打入處置後，前五日承壓、中後段修復。在處置期間等股價拉回上彎的月線買進，出關第一天開盤賣出——2,585 個真實處置事件、十年半資料驗證。</p>
+    <div class="chips">
+      <span class="chip num">2,585 個對齊事件</span>
+      <span class="chip num">539 筆回測交易</span>
+      <span class="chip num">cluster bootstrap ×1,000</span>
+      <span class="chip warn">RESEARCH ONLY・非投資建議</span>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="v num up">+5.4%</div><div class="k">平均淨報酬（每趟）</div><div class="s">已扣 0.6% 來回成本</div></div>
+      <div class="tile"><div class="v num">64.8%</div><div class="k">勝率</div><div class="s">中位數 +4.1%</div></div>
+      <div class="tile"><div class="v num">7 天</div><div class="k">持有期（中位）</div><div class="s">P25–P75：3–11 天</div></div>
+      <div class="tile"><div class="v num">9 / 11</div><div class="k">年度為正</div><div class="s">僅 2018、2022 小幅為負</div></div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-no">01</span><h2>為什麼有這個機會</h2></div>
+    <p class="lede">股票連續過熱會被交易所「處置」：改成每 5 或 20 分鐘撮合一次、且須預收款券。流動性被鎖住，前五天賣壓集中釋放；賣壓消化完，價格在處置中後段修復。出關之後，沒有續漲證據。</p>
+    <div class="chart-card">
+      <div class="chart-title">處置事件的平均價格路徑（相對大盤超額報酬）</div>
+      <div class="chart-sub num">2,585 個事件，2016–2026，以公告日 cluster bootstrap 1,000 次；括號為 95% 信賴區間</div>
+      <div class="path-row">
+        <div class="path-lab">公告 → 處置第 5 日<small>賣壓釋放</small></div>
+        <div class="path-track"><div class="path-zero"></div><div class="path-bar" data-tip="公告收盤 → 處置第5日｜平均 -1.21%｜CI [-1.75%, -0.63%]" style="right:50%;width:8.3%;background:var(--dn);border-radius:4px 0 0 4px;"></div></div>
+        <div><div class="path-val num dn">-1.21%</div><div class="path-ci num">[-1.75, -0.63]</div></div>
+      </div>
+      <div class="path-row">
+        <div class="path-lab">第 5 日 → 處置期末<small>修復段（本策略吃這段）</small></div>
+        <div class="path-track"><div class="path-zero"></div><div class="path-bar" data-tip="處置第5日 → 處置期末｜平均 +3.65%｜CI [+3.12%, +4.18%]" style="left:50%;width:25%;background:var(--up);border-radius:0 4px 4px 0;"></div></div>
+        <div><div class="path-val num up">+3.65%</div><div class="path-ci num">[+3.12, +4.18]</div></div>
+      </div>
+      <div class="path-row">
+        <div class="path-lab">期末 → 出關後第 5 日<small>出關不續漲</small></div>
+        <div class="path-track"><div class="path-zero"></div><div class="path-bar" data-tip="處置期末 → 出關後第5日｜平均 -1.07%｜CI [-1.71%, -0.44%]" style="right:50%;width:7.3%;background:var(--dn);border-radius:4px 0 0 4px;"></div></div>
+        <div><div class="path-val num dn">-1.07%</div><div class="path-ci num">[-1.71, -0.44]</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-no">02</span><h2>交易規則：三步</h2></div>
+    <p class="lede">每天收盤後十分鐘可以做完。不用盯盤、不用看籌碼。</p>
+    <div class="grid3">
+      <div class="step">
+        <div class="n">STEP 1・盤後</div>
+        <h3>掃處置名單</h3>
+        <p>到證交所／櫃買「處置有價證券」公告頁，拿到目前處置中的股票（通常 10–30 檔）。記下每一檔的出關日。</p>
+      </div>
+      <div class="step">
+        <div class="n">STEP 2・訊號</div>
+        <h3>月線上彎＋拉回月線</h3>
+        <p>兩個條件同時成立才買：<b>MA20 高於 5 天前</b>（月線上彎），且<b>收盤價 ≤ MA20 × 1.01</b>（拉回到月線帶，跌破也算）。成立 → 次日開盤限價買進。</p>
+      </div>
+      <div class="step">
+        <div class="n">STEP 3・出場</div>
+        <h3>出關第一天開盤賣</h3>
+        <p>恢復正常交易的第一天，開盤直接出清。賺賠都賣，不留戀。回測中這是四個出場點裡最好的一個。</p>
+      </div>
+    </div>
+    <div class="laws">
+      <div class="law"><b>出關必賣</b><span class="num">多抱到出關後第 5 天：勝率 64.8% → 56.5%，報酬中位數 +4.1% → +2.0%。</span></div>
+      <div class="law"><b>做空只空 20 分鐘盤</b><span class="num">第二次處置（20 分鐘撮合）公告後前 5 日平均 -4.28%；第一次處置（5 分鐘）僅 -0.50% 且不顯著——5 分鐘盤不空。</span></div>
+      <div class="law"><b>買進當天跌是常態</b><span>訊號常出現在恐慌段，進場日收黑很正常。要加碼只加事先計畫的第二批，之後不再攤平。</span></div>
+      <div class="law"><b>倉位上限</b><span>單檔 2–3% 資金、同時最多 4–5 檔、不超過該股單日成交值 3%。處置股流動性差，倉太大出不掉。</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-no">03</span><h2>回測績效</h2></div>
+    <p class="lede">兩種訊號窗、四個出場點全部顯著為正。出關首日開盤賣最佳；嚴選版（只在處置第 3–5 天觀察訊號）樣本較少但更乾淨。</p>
+    <div class="panel tbl-scroll">
+      <table>
+        <thead><tr><th>出場點</th><th>N</th><th>平均</th><th>中位數</th><th>勝率</th><th>95% CI</th></tr></thead>
+        <tbody class="num">
+          <tr class="grp"><td colspan="6">全訊號窗（處置第 1 天起，539 筆）</td></tr>
+          <tr><td class="rowlab">出關前一日收盤</td><td>536</td><td class="up">+4.16%</td><td>+3.10%</td><td>65.3%</td><td>[+3.20, +5.14]</td></tr>
+          <tr><td class="rowlab">出關首日開盤 ★</td><td>526</td><td class="up"><b>+5.38%</b></td><td>+4.13%</td><td>64.8%</td><td>[+4.21, +6.56]</td></tr>
+          <tr><td class="rowlab">出關首日收盤</td><td>526</td><td class="up">+5.15%</td><td>+3.97%</td><td>63.7%</td><td>[+3.93, +6.40]</td></tr>
+          <tr><td class="rowlab">出關後第 5 日收盤</td><td>524</td><td class="up">+5.63%</td><td>+2.02%</td><td>56.5%</td><td>[+3.80, +7.23]</td></tr>
+          <tr class="grp"><td colspan="6">嚴選窗（僅處置第 3–5 天觀察，189 筆）</td></tr>
+          <tr><td class="rowlab">出關前一日收盤</td><td>189</td><td class="up">+5.40%</td><td>+5.86%</td><td>69.8%</td><td>[+3.63, +7.14]</td></tr>
+          <tr><td class="rowlab">出關首日開盤 ★</td><td>183</td><td class="up"><b>+6.58%</b></td><td>+6.42%</td><td>69.4%</td><td>[+4.69, +8.47]</td></tr>
+          <tr><td class="rowlab">出關首日收盤</td><td>183</td><td class="up">+5.90%</td><td>+4.03%</td><td>66.1%</td><td>[+3.85, +7.75]</td></tr>
+          <tr><td class="rowlab">出關後第 5 日收盤</td><td>182</td><td class="up">+5.40%</td><td>+2.06%</td><td>57.1%</td><td>[+2.98, +7.97]</td></tr>
+        </tbody>
+      </table>
+      <div class="tbl-note">淨報酬＝已扣 0.6% 來回成本；CI 為公告日 cluster bootstrap 1,000 次。★＝建議出場點。</div>
+    </div>
+
+    <div style="height:14px;"></div>
+
+    <div class="chart-card">
+      <div class="chart-title">年度平均報酬（全訊號窗・出關首日開盤賣・淨）</div>
+      <div class="chart-sub num">紅＝正報酬、綠＝負報酬（台股慣例）。2016 年僅 1 筆、2026 年統計至 7 月。</div>
+      <div class="chart-scroll">
+        <svg id="yr" viewBox="0 0 960 300" role="img" aria-label="2016 至 2026 年度平均報酬長條圖"></svg>
+      </div>
+      <details>
+        <summary>展開數據表</summary>
+        <table class="num" id="yr-table"><thead><tr><th>年度</th><th>筆數</th><th>平均淨報酬</th></tr></thead><tbody></tbody></table>
+      </details>
+    </div>
+
+    <div style="height:14px;"></div>
+
+    <div class="grid2">
+      <div class="panel">
+        <div class="chart-title">第一次 vs 第二次處置</div>
+        <div class="chart-sub">第二次被關（20 分鐘撮合）的浪子回頭，跌更深、修復更強。</div>
+        <table class="num">
+          <thead><tr><th>類型</th><th>N</th><th>平均</th><th>勝率</th></tr></thead>
+          <tbody>
+            <tr><td class="rowlab">第一次處置（5 分鐘）</td><td>349</td><td class="up">+4.63%</td><td>61.9%</td></tr>
+            <tr><td class="rowlab">第二次以上（20 分鐘）</td><td>177</td><td class="up"><b>+6.86%</b></td><td>70.6%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="panel">
+        <div class="chart-title">被關後跌越深，反彈越大</div>
+        <div class="chart-sub">依處置期間累計跌幅分組（方向成立，組間 CI 重疊）。</div>
+        <table class="num">
+          <thead><tr><th>累跌幅</th><th>N</th><th>平均</th><th>勝率</th></tr></thead>
+          <tbody>
+            <tr><td class="rowlab">&lt; 8%</td><td>126</td><td class="up">+4.68%</td><td>64.3%</td></tr>
+            <tr><td class="rowlab">8–15%</td><td>113</td><td class="up">+4.50%</td><td>67.3%</td></tr>
+            <tr><td class="rowlab">&gt; 15%</td><td>287</td><td class="up"><b>+6.03%</b></td><td>64.1%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-no">04</span><h2>籌碼要不要看？測過了：不用</h2></div>
+    <p class="lede">用 FinMind 分點資料重建「主力十日買賣超」（排除國泰六都散戶分點的殘差淨流），對 2021 年後 356 筆完整樣本做對照——主力有買的那組沒有比較好。原因很直觀：<b>月線還能上彎，本身就代表過去一個月買方撐住了</b>；主力真跑掉的股票根本進不了訊號名單。線型已經把籌碼的資訊吃掉了。</p>
+    <div class="grid2">
+      <div class="panel">
+        <table class="num">
+          <thead><tr><th>分組（訊號日前 10 日）</th><th>N</th><th>平均</th><th>勝率</th></tr></thead>
+          <tbody>
+            <tr><td class="rowlab">主力淨買超（主十 &gt; 0）</td><td>127</td><td class="up">+5.42%</td><td>65.4%</td></tr>
+            <tr><td class="rowlab">主力淨賣超（主十 ≤ 0）</td><td>219</td><td class="up">+6.20%</td><td>67.1%</td></tr>
+          </tbody>
+        </table>
+        <div class="tbl-note">兩組 CI 大幅重疊＝統計上無差異；「長期賣超不買」「主力大買才進」等變體同樣測不出增益。</div>
+      </div>
+      <div class="panel">
+        <div class="chart-title">但注意邊界</div>
+        <ul class="risk" style="margin-top:8px;">
+          <li>這裡的主力線是<b>公開透明版</b>，不等於付費軟體的專有公式。</li>
+          <li>測的是「全樣本分組」；「同日多檔挑一檔」的選股情境未測。</li>
+          <li>分點資料只回溯到 2021 年 6 月。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-no">05</span><h2>真實案例（2026 年 6 月）</h2></div>
+    <p class="lede">同一套規則下的三筆實際回測交易——包含賠錢的那筆。</p>
+    <div class="grid3">
+      <div class="case">
+        <div class="name">合晶 6182</div>
+        <div class="tag num">第二次處置・20 分鐘撮合</div>
+        <div class="ret num up">+30.2%</div>
+        <dl class="num">
+          <dt>訊號</dt><dd>6/10 收 78.5（MA20 78.1 上彎）</dd>
+          <dt>進場</dt><dd>6/11 開盤 79.5</dd>
+          <dt>出場</dt><dd>6/16 出關開盤</dd>
+        </dl>
+      </div>
+      <div class="case">
+        <div class="name">群創 3481</div>
+        <div class="tag num">第一次處置・5 分鐘撮合</div>
+        <div class="ret num up">+44.9%</div>
+        <dl class="num">
+          <dt>訊號</dt><dd>6/10 收 43.3（MA20 45.7）</dd>
+          <dt>進場</dt><dd>6/11 開盤 42.6</dd>
+          <dt>出場</dt><dd>6/18 出關開盤</dd>
+        </dl>
+      </div>
+      <div class="case">
+        <div class="name">沛亨 6291</div>
+        <div class="tag num">第一次處置・5 分鐘撮合</div>
+        <div class="ret num dn">-2.4%</div>
+        <dl class="num">
+          <dt>訊號</dt><dd>6/9 收 558（MA20 561）</dd>
+          <dt>進場</dt><dd>6/10 開盤 547</dd>
+          <dt>出場</dt><dd>6/15 出關開盤・照賣</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-no">06</span><h2>風險與限制（先讀完再想錢）</h2></div>
+    <div class="panel">
+      <ul class="risk">
+        <li><b>尾部很肥。</b>單筆最慘 <span class="num dn">-50%</span>、最好 <span class="num up">+57%</span>，單筆標準差 13%。這是「常小賺、偶爾大賺、偶爾挨一巴掌」的分佈——倉位控制就是生命線。</li>
+        <li><b>成交可行性未驗證。</b>回測用日 K 開盤價；處置股 5／20 分鐘集合競價，實際掛單可能買不到、賣不掉，漲跌停鎖死日更是。上線前先紙上跟單一個月，對照實際成交價。</li>
+        <li><b>2026 年樣本過熱。</b>今年上半年 131 筆、平均 +11%——處置股大量出現的特殊年份，別外推成常態。</li>
+        <li><b>制度會變。</b>本研究對照 113/12/31 版處置作業要點；規則修訂後需重新驗證。</li>
+        <li><b>研究定位 RESEARCH ONLY。</b>本頁為量化研究紀錄，非投資建議；依此交易盈虧自負。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>資料：FinMind 處置公告（5,104 列原始資料）× 全市場還原日 K × 加權指數 IX0001；券商分點 5,367 個股票日精準回補。</div>
+    <div>方法：point-in-time 事件研究，訊號收盤確認、次一交易日開盤成交，公告日 cluster bootstrap 1,000 次；64 項回歸測試。</div>
+    <div class="num">更新：2026-07-10</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  /* ---------- 年度長條圖 ---------- */
+  var DATA=[
+    {y:"2016",n:1,v:10.11},{y:"2017",n:20,v:2.98},{y:"2018",n:23,v:-2.71},
+    {y:"2019",n:21,v:6.53},{y:"2020",n:81,v:5.83},{y:"2021",n:61,v:5.17},
+    {y:"2022",n:30,v:-0.36},{y:"2023",n:47,v:4.83},{y:"2024",n:64,v:2.76},
+    {y:"2025",n:60,v:2.46},{y:"2026",n:131,v:11.36}
+  ];
+  var svg=document.getElementById("yr");
+  var NS="http://www.w3.org/2000/svg";
+  var W=960,H=300,padL=46,padR=10,padT=26,padB=34;
+  var plotW=W-padL-padR,plotH=H-padT-padB;
+  var maxV=12,minV=-4;
+  function yPos(v){return padT+(maxV-v)/(maxV-minV)*plotH;}
+  var zeroY=yPos(0);
+  function el(tag,attrs,parent){var e=document.createElementNS(NS,tag);for(var k in attrs){e.setAttribute(k,attrs[k]);}(parent||svg).appendChild(e);return e;}
+  /* 格線與軸標 */
+  [-4,0,4,8,12].forEach(function(g){
+    var y=yPos(g);
+    el("line",{x1:padL,x2:W-padR,y1:y,y2:y,stroke:g===0?"#c3c2b7":"#e1e0d9","stroke-width":1});
+    var t=el("text",{x:padL-8,y:y+4,"text-anchor":"end","font-size":"11",fill:"#898781"});
+    t.textContent=(g>0?"+":"")+g+"%";
+  });
+  var band=plotW/DATA.length,barW=26;
+  DATA.forEach(function(d,i){
+    var cx=padL+band*i+band/2;
+    var y0=Math.min(zeroY,yPos(d.v)),h=Math.abs(zeroY-yPos(d.v));
+    var up=d.v>=0;
+    /* 大命中區（先加，hover 走 sibling selector） */
+    var hit=el("rect",{x:padL+band*i,y:padT,width:band,height:plotH,"class":"bar-hit","data-tip":d.y+" 年｜n="+d.n+"｜平均 "+(d.v>0?"+":"")+d.v.toFixed(1)+"%"});
+    var r=4;
+    var bar=el("path",{d:up?
+      "M"+(cx-barW/2)+" "+zeroY+" L"+(cx-barW/2)+" "+(y0+r)+" Q"+(cx-barW/2)+" "+y0+" "+(cx-barW/2+r)+" "+y0+" L"+(cx+barW/2-r)+" "+y0+" Q"+(cx+barW/2)+" "+y0+" "+(cx+barW/2)+" "+(y0+r)+" L"+(cx+barW/2)+" "+zeroY+" Z":
+      "M"+(cx-barW/2)+" "+zeroY+" L"+(cx-barW/2)+" "+(y0+h-r)+" Q"+(cx-barW/2)+" "+(y0+h)+" "+(cx-barW/2+r)+" "+(y0+h)+" L"+(cx+barW/2-r)+" "+(y0+h)+" Q"+(cx+barW/2)+" "+(y0+h)+" "+(cx+barW/2)+" "+(y0+h-r)+" L"+(cx+barW/2)+" "+zeroY+" Z",
+      fill:up?"#e34948":"#008300"});
+    /* 數值標籤（次要編碼：正負號） */
+    var vt=el("text",{x:cx,y:up?y0-7:y0+h+15,"text-anchor":"middle","font-size":"11.5","font-weight":"600",fill:up?"#b23130":"#006300"});
+    vt.textContent=(d.v>0?"+":"")+d.v.toFixed(1);
+    var yt=el("text",{x:cx,y:H-10,"text-anchor":"middle","font-size":"11.5",fill:"#898781"});
+    yt.textContent=d.y;
+  });
+  /* 數據表 */
+  var tb=document.querySelector("#yr-table tbody");
+  DATA.forEach(function(d){
+    var tr=document.createElement("tr");
+    tr.innerHTML="<td>"+d.y+"</td><td>"+d.n+"</td><td class=\""+(d.v>=0?"up":"dn")+"\">"+(d.v>0?"+":"")+d.v.toFixed(2)+"%</td>";
+    tb.appendChild(tr);
+  });
+  /* ---------- 共用 tooltip ---------- */
+  var tip=document.getElementById("tip");
+  function show(e){
+    var t=e.target.getAttribute("data-tip");
+    if(!t){return;}
+    tip.innerHTML=t.split("｜").map(function(seg,i){return i===0?"<b>"+seg+"</b>":"<span class=\"t-k\"> · </span>"+seg;}).join("");
+    tip.style.opacity="1";
+    tip.style.left=e.clientX+"px";
+    tip.style.top=e.clientY+"px";
+  }
+  function hide(){tip.style.opacity="0";}
+  document.querySelectorAll("[data-tip]").forEach(function(n){
+    n.addEventListener("mousemove",show);
+    n.addEventListener("mouseleave",hide);
+  });
+})();
+</script>
+</body>
+</html>
