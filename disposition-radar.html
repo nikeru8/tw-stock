@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>處置股雷達｜2026-07-09</title>
+<style>
+:root{--page:#f9f9f7;--surface:#fcfcfb;--ink:#0b0b0b;--ink2:#52514e;--muted:#898781;
+--grid:#e1e0d9;--ring:rgba(11,11,11,0.10);--up:#e34948;--dn:#008300;--accent:#2a78d6;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--page);color:var(--ink);font-family:system-ui,-apple-system,"PingFang TC","Heiti TC",sans-serif;font-size:15px;line-height:1.6;}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px;}
+header{padding:44px 0 20px;border-bottom:1px solid var(--grid);}
+.kicker{font-size:12px;letter-spacing:.16em;color:var(--muted);}
+h1{font-size:32px;margin:8px 0 4px;}
+.sub{color:var(--ink2);font-size:14.5px;}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.chip{font-size:12.5px;border:1px solid var(--ring);background:var(--surface);border-radius:999px;padding:3px 11px;color:var(--ink2);}
+.chip.buy{background:#fdefee;border-color:#eec3c2;color:#b23130;font-weight:700;}
+.chip.sell{background:#eef6ee;border-color:#bcd9bc;color:#006300;font-weight:700;}
+.chip.warn{background:#fdf7ea;border-color:#e6c98a;color:#8a5600;}
+section{padding:34px 0 6px;}
+h2{font-size:20px;margin-bottom:4px;}
+.lede{color:var(--ink2);font-size:13.5px;margin-bottom:14px;}
+.panel{background:var(--surface);border:1px solid var(--ring);border-radius:12px;padding:18px 20px;overflow-x:auto;}
+table{width:100%;border-collapse:collapse;font-size:13.5px;font-variant-numeric:tabular-nums;}
+th{font-size:11.5px;color:var(--muted);text-align:right;padding:7px 9px;border-bottom:1px solid #c3c2b7;white-space:nowrap;}
+td{padding:7px 9px;border-bottom:1px solid var(--grid);text-align:right;white-space:nowrap;}
+th:nth-child(-n+2),td:nth-child(-n+2){text-align:left;}
+tr:last-child td{border-bottom:0;}
+.up{color:var(--up);}.dn{color:var(--dn);}.mut{color:var(--muted);}
+.sig{display:inline-block;background:#fdefee;color:#b23130;border:1px solid #eec3c2;border-radius:6px;padding:1px 8px;font-weight:700;font-size:12px;}
+.sig.s{background:#eef6ee;color:#006300;border-color:#bcd9bc;}
+.sig.w{background:#fdf7ea;color:#8a5600;border-color:#e6c98a;}
+footer{margin:44px 0 40px;padding-top:18px;border-top:1px solid var(--grid);font-size:12px;color:var(--muted);line-height:1.8;}
+a{color:var(--accent);text-decoration:none;}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="kicker">量化雷達・每日盤後自動更新・資料日 2026-07-09</div>
+  <h1>處置股雷達</h1>
+  <div class="sub">聽牌關卡價＋坐牢中參數＋浪子回頭訊號。規則與回測依據見<a href="disposition-strategy.html">策略頁</a>（539 筆、出關首日開盤賣淨 +5.4%、勝率 64.8%）。</div>
+  <div class="chips"><span class="chip buy">明早開盤買：3450</span><span class="chip buy">明早開盤買：2303</span><span class="chip buy">明早開盤買：8021</span><span class="chip buy">明早開盤買：6217</span><span class="chip sell">出關賣出：2481</span><span class="chip sell">出關賣出：6141</span><span class="chip sell">出關賣出：6834</span><span class="chip warn">聽牌空方觀察：3167</span><span class="chip warn">聽牌空方觀察：2243</span></div>
+</div></header>
+
+<section><div class="wrap">
+  <h2>① 明日行動</h2>
+  <div class="lede">浪子回頭＝今收確認、<b>明早開盤限價買</b>（參考試撮 +1%）；出關賣＝恢復正常交易首日開盤出清；空方觀察僅限 20 分鐘候選。</div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>② 處置坐牢中</h2>
+  <div class="lede">依剩餘天數排序。累跌幅＝期間高點回落；主十＝訊號日前 10 日主力淨流（股，透明代理，回測不加分、僅供參考）。</div>
+  <div class="panel"><table>
+    <thead><tr><th>股票</th><th>撮合/次</th><th>D幾</th><th>剩餘</th><th>出關</th><th>累跌幅</th><th>月線</th><th>距月線</th><th>主十</th><th>訊號</th></tr></thead>
+    <tbody><tr><td>2481 強茂</td><td class='mut'>5分/第1次</td><td>D10</td><td>0</td><td class='mut'>07-09</td><td>8.4%</td><td>↑</td><td>+17.3%</td><td>-115,189</td><td><span class="sig s">明日出關</span></td></tr><tr><td>6141 柏承</td><td class='mut'>5分/第1次</td><td>D10</td><td>0</td><td class='mut'>07-09</td><td>9.1%</td><td>↑</td><td>+6.2%</td><td>12,481</td><td><span class="sig s">明日出關</span></td></tr><tr><td>6834 天二科技</td><td class='mut'>20分/第2次</td><td>D10</td><td>0</td><td class='mut'>07-09</td><td>7.1%</td><td>↑</td><td>+16.0%</td><td>10,112</td><td><span class="sig s">明日出關</span></td></tr><tr><td>5321 美而快</td><td class='mut'>20分/第1次</td><td>D9</td><td>1</td><td class='mut'>07-10</td><td>20.1%</td><td>↑</td><td>+17.4%</td><td>-48,320</td><td></td></tr><tr><td>5464 霖宏</td><td class='mut'>5分/第1次</td><td>D9</td><td>1</td><td class='mut'>07-10</td><td>12.5%</td><td>↑</td><td>+4.9%</td><td>-235,214</td><td></td></tr><tr><td>6243 迅杰</td><td class='mut'>5分/第1次</td><td>D9</td><td>1</td><td class='mut'>07-10</td><td>7.5%</td><td>↑</td><td>+3.6%</td><td>-49,904</td><td></td></tr><tr><td>6683 雍智科技</td><td class='mut'>5分/第1次</td><td>D9</td><td>1</td><td class='mut'>07-10</td><td>9.2%</td><td>↑</td><td>+1.6%</td><td>-9,801</td><td></td></tr><tr><td>2233 宇隆</td><td class='mut'>5分/第1次</td><td>D8</td><td>2</td><td class='mut'>07-13</td><td>9.7%</td><td>↓</td><td>-4.3%</td><td>207,034</td><td></td></tr><tr><td>2483 百容</td><td class='mut'>5分/第1次</td><td>D8</td><td>2</td><td class='mut'>07-13</td><td>6.8%</td><td>↑</td><td>+32.7%</td><td>-25,803</td><td></td></tr><tr><td>3450 聯鈞</td><td class='mut'>5分/第1次</td><td>D8</td><td>2</td><td class='mut'>07-13</td><td>9.5%</td><td>↑</td><td>-4.1%</td><td>-169,797</td><td><span class="sig">浪子回頭</span></td></tr><tr><td>8024 佑華</td><td class='mut'>5分/第1次</td><td>D8</td><td>2</td><td class='mut'>07-13</td><td>0.0%</td><td>↑</td><td>+15.6%</td><td>-29,373</td><td></td></tr><tr><td>2303 聯電</td><td class='mut'>5分/第1次</td><td>D6</td><td>4</td><td class='mut'>07-15</td><td>9.0%</td><td>↑</td><td>-1.0%</td><td>-10,519,693</td><td><span class="sig">浪子回頭</span></td></tr><tr><td>1435 中福</td><td class='mut'>20分/第2次</td><td>D8</td><td>5</td><td class='mut'>07-16</td><td>11.6%</td><td>↑</td><td>+48.7%</td><td>-11,505</td><td></td></tr><tr><td>3189 景碩</td><td class='mut'>20分/第2次</td><td>D5</td><td>5</td><td class='mut'>07-16</td><td>5.7%</td><td>↑</td><td>+5.4%</td><td>-999,428</td><td></td></tr><tr><td>6226 光鼎</td><td class='mut'>20分/第2次</td><td>D8</td><td>5</td><td class='mut'>07-16</td><td>8.1%</td><td>↑</td><td>+45.8%</td><td>-1,056,651</td><td></td></tr><tr><td>8021 尖點</td><td class='mut'>20分/第2次</td><td>D5</td><td>5</td><td class='mut'>07-16</td><td>8.4%</td><td>↑</td><td>-3.8%</td><td>-110,914</td><td><span class="sig">浪子回頭</span></td></tr><tr><td>8033 雷虎</td><td class='mut'>5分/第1次</td><td>D5</td><td>5</td><td class='mut'>07-16</td><td>5.0%</td><td>↑</td><td>+39.6%</td><td>1,493,395</td><td></td></tr><tr><td>1447 力鵬</td><td class='mut'>5分/第1次</td><td>D4</td><td>6</td><td class='mut'>07-17</td><td>22.0%</td><td>↑</td><td>+15.9%</td><td>-5,399,286</td><td></td></tr><tr><td>1617 榮星</td><td class='mut'>5分/第1次</td><td>D4</td><td>6</td><td class='mut'>07-17</td><td>12.8%</td><td>↑</td><td>+20.9%</td><td>-40,151</td><td></td></tr><tr><td>3147 大綜</td><td class='mut'>20分/第1次</td><td>D4</td><td>6</td><td class='mut'>07-17</td><td>7.0%</td><td>↓</td><td>-20.2%</td><td>-107,002</td><td></td></tr><tr><td>3230 錦明</td><td class='mut'>20分/第1次</td><td>D7</td><td>6</td><td class='mut'>07-17</td><td>3.1%</td><td>↑</td><td>+30.6%</td><td>276,692</td><td></td></tr><tr><td>6217 中探針</td><td class='mut'>5分/第1次</td><td>D4</td><td>6</td><td class='mut'>07-17</td><td>7.1%</td><td>↑</td><td>-1.0%</td><td>-148,137</td><td><span class="sig">浪子回頭</span></td></tr><tr><td>7795 長廣</td><td class='mut'>5分/第1次</td><td>D4</td><td>6</td><td class='mut'>07-17</td><td>17.1%</td><td>↑</td><td>+12.8%</td><td>18,422</td><td></td></tr><tr><td>1515 力山</td><td class='mut'>5分/第1次</td><td>D3</td><td>7</td><td class='mut'>07-20</td><td>6.2%</td><td>↑</td><td>+27.6%</td><td>-164,195</td><td></td></tr><tr><td>1718 中纖</td><td class='mut'>20分/第2次</td><td>D3</td><td>7</td><td class='mut'>07-20</td><td>8.4%</td><td>↑</td><td>+22.8%</td><td>-14,895,358</td><td></td></tr><tr><td>2466 冠西電</td><td class='mut'>5分/第1次</td><td>D2</td><td>8</td><td class='mut'>07-21</td><td>0.5%</td><td>↑</td><td>+49.6%</td><td>277,835</td><td></td></tr><tr><td>6617 共信-KY</td><td class='mut'>5分/第1次</td><td>D2</td><td>8</td><td class='mut'>07-21</td><td>8.3%</td><td>↑</td><td>+40.5%</td><td>47,009</td><td></td></tr><tr><td>3055 蔚華科</td><td class='mut'>20分/第2次</td><td>D4</td><td>9</td><td class='mut'>07-22</td><td>10.5%</td><td>↑</td><td>+37.9%</td><td>508,249</td><td></td></tr><tr><td>4707 磐亞</td><td class='mut'>20分/第1次</td><td>D1</td><td>9</td><td class='mut'>07-22</td><td>3.3%</td><td>↑</td><td>+32.8%</td><td>-488,928</td><td></td></tr><tr><td>6174 安碁</td><td class='mut'>5分/第1次</td><td>D1</td><td>9</td><td class='mut'>07-22</td><td>6.2%</td><td>↑</td><td>+6.7%</td><td>4,073</td><td></td></tr><tr><td>8261 富鼎</td><td class='mut'>5分/第1次</td><td>D1</td><td>11</td><td class='mut'>07-24</td><td>7.4%</td><td>↑</td><td>+25.6%</td><td>-724,205</td><td></td></tr></tbody>
+  </table></div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>③ 處置日報（聽牌雷達）</h2>
+  <div class="lede">差一個有效注意日就會觸發處置的股票。關卡價為第一款「六日累積漲幅 32%」<b>近似值</b>（未含相對指數／量／週轉率副條件）；路徑判定為精確計算。</div>
+  <div class="panel"><table>
+    <thead><tr><th>股票</th><th>市場</th><th>累計注意</th><th>差一日路徑</th><th>今收</th><th>關卡價(約)</th><th>下次處置</th></tr></thead>
+    <tbody><tr><td>3167 大量</td><td class='mut'>TWSE</td><td>1</td><td style='text-align:left'>30日內12次(已12)</td><td>775.00</td><td>1,055.00</td><td><span class="sig w">空方觀察·20分候選</span></td></tr><tr><td>2243 宏旭-KY</td><td class='mut'>TWSE</td><td>1</td><td style='text-align:left'>30日內12次(已12)</td><td>51.00</td><td>82.80</td><td><span class="sig w">空方觀察·20分候選</span></td></tr><tr><td>2601 益航</td><td class='mut'>TWSE</td><td>1</td><td style='text-align:left'>連3(第1款)</td><td>7.98</td><td>7.21</td><td><span class="mut">5分候選·不空</span></td></tr><tr><td>4169 泰宗</td><td class='mut'>TWSE</td><td>1</td><td style='text-align:left'>連3(第1款)</td><td>270.00</td><td>267.00</td><td><span class="mut">5分候選·不空</span></td></tr></tbody>
+  </table></div>
+</div></section>
+
+<footer><div class="wrap">
+  資料：FinMind（處置名單/日K/交易日曆）× TWSE/TPEx（注意股款次）× 本機分點庫。訊號定義 RISING_MA20_PULLBACK_TRANSPARENT_V1。<br />
+  RESEARCH ONLY——非投資建議；處置股 5/20 分鐘集合競價成交可行性未驗證，關卡價為近似值。產生：2026-07-10T21:07:33
+</div></footer>
+</body>
+</html>
