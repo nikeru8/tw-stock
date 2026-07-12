@@ -302,6 +302,9 @@ footer{margin-top:64px;padding:28px 0 56px 0;border-top:1px solid var(--grid);fo
           </tbody>
         </table>
         <div class="tbl-note">兩組 CI 大幅重疊＝統計上無差異；「長期賣超不買」「主力大買才進」等變體同樣測不出增益。</div>
+        <div style="margin-top:12px;padding:12px 14px;border-left:3px solid #2a78d6;background:rgba(42,120,214,0.06);border-radius:6px;font-size:13.5px;color:var(--ink2);">
+          <b style="color:#2a78d6;">2026-07 翻案更新</b>：訊號升級為 V2（當日大跌守上彎月線）後重測——<b>主十有加分了</b>：主十&gt;0 組 +6.71%／勝率 68.0% vs ≤0 組 +4.59%／62.6%，「主十&gt;10 張/日」最強 +6.97%／68.3%。解讀：籌碼口訣是配「大跌日」訊號型態用的（檢驗主力崩跌日有沒有落跑），掛在慢速回踩訊號上就無效。本節原結論仍適用於 V1 touch 訊號；CI 仍重疊，故雷達僅列為挑選參考。
+        </div>
       </div>
       <div class="panel">
         <div class="chart-title">但注意邊界</div>
@@ -364,6 +367,54 @@ footer{margin-top:64px;padding:28px 0 56px 0;border-top:1px solid var(--grid);fo
         <li><b>2026 年樣本過熱。</b>今年上半年 131 筆、平均 +11%——處置股大量出現的特殊年份，別外推成常態。</li>
         <li><b>制度會變。</b>本研究對照 113/12/31 版處置作業要點；規則修訂後需重新驗證。</li>
         <li><b>研究定位 RESEARCH ONLY。</b>本頁為量化研究紀錄，非投資建議；依此交易盈虧自負。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-no">07</span><h2>勝率階梯：全因子掃描後的三級打法（2026-07-12）</h2></div>
+    <p class="lede">把 FinMind 抓得到的維度全部疊上 V2 訊號測一遍：620 檔 × 9 個資料集（融資券／三大法人／當沖／估值／月營收／外資持股／TDCC 股權分級／借券／市值）＋族群、大盤、分點因子——<b>75 桶、2-way 1,637 對、3-way 4,578 組、4-way 4,339 組全空間窮舉</b>，BH-FDR q=0.10 控多重檢定、雙時代同向、12＋2 個獨立代理對抗覆算。先講兩個結構性結論：<b>加深跌幅門檻不會提高勝率</b>（7%／9.5%／10% 變體全在 62–64%），以及 <b>4-way 零倖存＝三因子就是複雜度天花板</b>。</p>
+    <div class="panel">
+      <table class="num">
+        <thead><tr><th>打法</th><th>疊加條件（V2 訊號之上）</th><th>勝率</th><th>平均淨報酬</th><th>筆數（年均）</th><th>雷達標籤</th></tr></thead>
+        <tbody>
+          <tr><td class="rowlab">基準</td><td>—</td><td>63.2%</td><td class="up">+5.27%</td><td>889（≈87）</td><td>浪子回頭</td></tr>
+          <tr><td class="rowlab">A 簡單版</td><td>市值 &gt; 100 億</td><td>71.4%</td><td class="up">+7.0%</td><td>304（≈29）</td><td>—</td></tr>
+          <tr><td class="rowlab">B 精選版</td><td>∧ 外資近5日淨買 &gt; 23.5bp（占股本）</td><td><b>77.9%</b></td><td class="up"><b>+9.29%</b></td><td>136（≈13）</td><td>★精選</td></tr>
+          <tr><td class="rowlab">B2 品質版</td><td>PBR ∈ (2.45, 5.34] ∧ 月營收 YoY &gt; 0 ∧ 大盤在月線上</td><td><b>81.7%</b></td><td class="up">+9.47%</td><td>109（≈10）</td><td>★品質</td></tr>
+        </tbody>
+      </table>
+      <div class="tbl-note">B2 通過獨立對抗覆算含「多頭偽效應」專查：對多頭子集基準 65.8% 調整後增益仍 +15.9pp——不是「多頭裡人人贏」。人話：有基本面（營收在成長）、估值不極端（非妖股非殭屍）、順著大盤——這種股票被制度關出來的大跌，是全樣本最可靠的錯殺。</div>
+    </div>
+    <div class="grid2" style="margin-top:14px;">
+      <div class="panel">
+        <div class="chart-title">避開規則（反向產出——這些情境勝率崩到擲硬幣以下）</div>
+        <table class="num" style="margin-top:8px;">
+          <thead><tr><th>情境</th><th>N</th><th>勝率</th></tr></thead>
+          <tbody>
+            <tr><td class="rowlab">距月線乖離大 ∧ 大盤在月線下</td><td>98</td><td class="dn">41.8%</td></tr>
+            <tr><td class="rowlab">處置第 1–2 天早期訊號 ∧ 微型股（&lt;30億）</td><td>133</td><td class="dn">45.9%</td></tr>
+            <tr><td class="rowlab">早期訊號 ∧ 入關前當沖冷清</td><td>126</td><td class="dn">46.0%</td></tr>
+          </tbody>
+        </table>
+        <div class="tbl-note">大盤跌破月線時雷達會停發 ★品質 並在頁首掛警示。</div>
+      </div>
+      <div class="panel">
+        <div class="chart-title">被審計刷掉的（看起來有效、其實是偽效應）</div>
+        <ul class="risk" style="margin-top:8px;">
+          <li><b>融資使用率高（名目 +9.2pp）</b>：「可融資」的股票本身勝率就 67.6%（不可融資的只有 54.5%）——增益一半是選樣效應，校正後剩 +4.8pp。</li>
+          <li><b>借券餘額類</b>：同樣的可得性偏差更嚴重（缺值股勝率僅 42.9%）。</li>
+          <li><b>族群共囚 ∧ 上櫃（80.6%）</b>：勝場三分之一擠在 2026 年 3–6 月三個題材叢集，時間分散性不及格，列觀察名單。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="panel" style="margin-top:14px;">
+      <ul class="risk">
+        <li><b>全部樣本內。</b>3-way 94 個倖存統計上預期約 9 個是假的（q=0.10）；B/B2 已過獨立覆算，可信度高一級，但實戰前仍需：成本滑價壓測 → 時間切分 → 紙上跟單 ≥30 筆（研究 repo 文件/18 §7）。</li>
+        <li><b>B2 有近年衰減跡象</b>：era1 增益 +26.5pp、era2 +10.3pp——約剩一半。</li>
+        <li>門檻全部凍結自回測三分位原值，寫死在雷達程式（radar.py）中，每日 16:40 自動判定。</li>
       </ul>
     </div>
   </div>
