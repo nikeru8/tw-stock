@@ -165,6 +165,26 @@ footer{margin-top:64px;padding:28px 0 56px 0;border-top:1px solid var(--grid);fo
   </div>
 </section>
 
+<section style="padding:28px 0 0 0;">
+  <div class="wrap">
+    <div class="panel" style="border-left:4px solid #e34948;">
+      <div style="font-size:13px;color:#e34948;font-weight:700;letter-spacing:0.08em;">2026-07-21 更新：二次觸發正式升級為可買訊號（文件/20 裁決）</div>
+      <p style="color:var(--ink2);margin-top:8px;max-width:60em;text-wrap:pretty;">
+        雙盲回測（官方引擎延伸 × 獨立重算，162 筆逐筆吻合）＋對抗驗證裁決：同一處置期
+        <b>第二次觸發浪子回頭不劣於首次</b>——n=162、淨 +6.17%（中位 +4.97%）、勝率 67.3%、
+        扣大盤超額 +5.25%（CI95 [+3.3%, +7.1%] 不跨零）；「連續下殺」與「隔≥2日第二波」兩種型態皆為正。
+        <b>第三次以上僅 8 筆樣本，維持⚠不追</b>。攤平語意同步修正：<b>首筆全額進場、不預留資金等攤平</b>
+        （889 事件中 728 個等不到第二訊號，預留半倉的無條件回測輸全額單筆 2.08pp）；
+        第二訊號出現時<b>若有新資金，該筆加碼本身期望值為正</b>。
+        <a href="disposition-radar.html">每日雷達</a>已同步：二次觸發列入買單並標「·二次」、
+        第三次以上標「三次以上⚠不追」；★精選仍僅掛首次觸發（挑戰者樣本純度）。
+        誠實條款：全樣本為定義擬合期內數字（上緣估計）、2026 上半年佔 27.8%（剔除後 +5.35%／62.4% 仍成立）、
+        分盤可成交性未建模。
+      </p>
+    </div>
+  </div>
+</section>
+
 <section>
   <div class="wrap">
     <div class="sec-head"><span class="sec-no">01</span><h2>為什麼有這個機會</h2></div>
@@ -215,7 +235,8 @@ footer{margin-top:64px;padding:28px 0 56px 0;border-top:1px solid var(--grid);fo
     <div class="laws">
       <div class="law"><b>出關必賣</b><span class="num">多抱到出關後第 5 天：勝率 64.8% → 56.5%，報酬中位數 +4.1% → +2.0%。</span></div>
       <div class="law"><b>做空只空 20 分鐘盤</b><span class="num">第二次處置（20 分鐘撮合）公告後前 5 日平均 -4.28%；第一次處置（5 分鐘）僅 -0.50% 且不顯著——5 分鐘盤不空。</span></div>
-      <div class="law"><b>買進當天跌是常態</b><span>訊號常出現在恐慌段，進場日收黑很正常。要加碼只加事先計畫的第二批，之後不再攤平。</span></div>
+      <div class="law"><b>買進當天跌是常態</b><span>訊號常出現在恐慌段，進場日收黑很正常。不預先保留資金等攤平——大多數事件根本等不到第二訊號。</span></div>
+      <div class="law"><b>二次觸發可買</b><span class="num">同一處置期第二次跳訊號＝新買點（162 筆、+6.17%、勝率 67.3%，不劣於首次；2026-07-21 文件/20）；有新資金可加碼該筆。第三次以上（僅 8 筆樣本）不追。</span></div>
       <div class="law"><b>倉位上限</b><span>單檔 2–3% 資金、同時最多 4–5 檔、不超過該股單日成交值 3%。處置股流動性差，倉太大出不掉。</span></div>
     </div>
   </div>
@@ -424,7 +445,7 @@ footer{margin-top:64px;padding:28px 0 56px 0;border-top:1px solid var(--grid);fo
   <div class="wrap">
     <div>資料：FinMind 處置公告（5,104 列原始資料）× 全市場還原日 K × 加權指數 IX0001；券商分點 5,367 個股票日精準回補。</div>
     <div>方法：point-in-time 事件研究，訊號收盤確認、次一交易日開盤成交，公告日 cluster bootstrap 1,000 次；64 項回歸測試。</div>
-    <div class="num">更新：2026-07-10</div>
+    <div class="num">更新：2026-07-21（二次觸發裁決・文件/20）</div>
   </div>
 </footer>
 
